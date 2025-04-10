@@ -1,0 +1,831 @@
+{
+  "systemOverview": {
+    "totalUsers": 3,
+    "totalCourses": 13,
+    "totalEnrollments": 5
+  },
+  "users": [
+    {
+      "id": 1,
+      "username": "student_minh",
+      "fullName": "Nguyễn Văn Minh",
+      "email": "minhnguyen@gmail.com",
+      "avatar": "",
+      "role": "student",
+      "createdAt": "2025-01-10T08:30:00Z",
+      "lastLogin": "2025-03-30T09:15:00Z"
+    },
+    {
+      "id": 2,
+      "username": "content_admin",
+      "fullName": "Lê Văn Hoàng",
+      "email": "hoangle@gmail.com",
+      "avatar": "",
+      "role": "adminOfContent",
+      "createdAt": "2024-11-05T10:00:00Z",
+      "lastLogin": "2025-03-30T08:30:00Z"
+    },
+    {
+      "id": 3,
+      "username": "course_admin",
+      "fullName": "Phạm Thị Mai",
+      "email": "maipham@gmail.com",
+      "avatar": "",
+      "role": "adminOfCourse",
+      "createdAt": "2024-12-20T09:15:00Z",
+      "lastLogin": "2025-03-30T10:00:00Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "language": "en",
+      "title": "Tiếng Anh Giao Tiếp Công Sở",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học tiếng Anh cho môi trường công sở chuyên nghiệp",
+      "price": 1500000,
+      "totalLessons": 4,
+      "enrolled": 28,
+      "duration": 120,
+      "createdAt": "2025-01-05T00:00:00Z",
+      "skillLevel": "basic",
+      "EstimalRate": 5,
+      "lessons": [
+        {
+          "id": 101,
+          "title": "Giao tiếp trong cuộc họp",
+          "order": 1,
+          "description": "Các mẫu câu thường dùng trong cuộc họp",
+          "url": "https://videos.example.com/en/meeting/1",
+          "duration": 30
+        },
+        {
+          "id": 102,
+          "title": "Viết email chuyên nghiệp",
+          "order": 2,
+          "description": "Cách viết email công việc đúng chuẩn",
+          "url": "https://videos.example.com/en/email/1",
+          "duration": 30
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "language": "ko",
+      "title": "Tiếng Hàn Nhập Môn",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học cơ bản dành cho người mới bắt đầu học tiếng Hàn",
+      "price": 1200000,
+      "totalLessons": 6,
+      "enrolled": 35,
+      "duration": 180,
+      "createdAt": "2025-01-10T00:00:00Z",
+      "skillLevel": "basic",
+      "EstimalRate": 4,
+      "lessons": [
+        {
+          "id": 201,
+          "title": "Bảng chữ cái Hangeul",
+          "order": 1,
+          "description": "Học cách đọc và viết bảng chữ cái Hàn Quốc",
+          "url": "https://videos.example.com/ko/alphabet/1",
+          "duration": 45
+        },
+        {
+          "id": 202,
+          "title": "Chào hỏi cơ bản",
+          "order": 2,
+          "description": "Các mẫu câu chào hỏi thông dụng",
+          "url": "https://videos.example.com/ko/greeting/1",
+          "duration": 30 
+        },
+        {
+          "id": 203,
+          "title": "Giới thiệu bản thân",
+          "order": 3,
+          "description": "Cách giới thiệu bản thân bằng tiếng Hàn",
+          "url": "https://videos.example.com/ko/introduction/1",
+          "duration": 35
+        },
+        {
+          "id": 204,
+          "title": "Số đếm cơ bản",
+          "order": 4,
+          "description": "Học số đếm từ 1-100",
+          "url": "https://videos.example.com/ko/numbers/1",
+          "duration": 40
+        },
+        {
+          "id": 205,
+          "title": "Mua sắm cơ bản",
+          "order": 5,
+          "description": "Các mẫu câu khi đi mua sắm",
+          "url": "https://videos.example.com/ko/shopping/1",
+          "duration": 30
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "language": "ko",
+      "title": "Tiếng Hàn Giao Tiếp Công Sở",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học tiếng Hàn cho môi trường làm việc chuyên nghiệp",
+      "price": 1800000,
+      "totalLessons": 8,
+      "enrolled": 22,
+      "duration": 240,
+      "createdAt": "2025-02-15T00:00:00Z",
+      "skillLevel": "intermediate",
+      "EstimalRate": 5,
+      "lessons": [
+        {
+          "id": 301,
+          "title": "Giao tiếp trong cuộc họp",
+          "order": 1,
+          "description": "Các mẫu câu thường dùng trong cuộc họp",
+          "url": "https://videos.example.com/ko/meeting/1",
+          "duration": 35
+        },
+        {
+          "id": 302,
+          "title": "Viết email công việc",
+          "order": 2,
+          "description": "Cách viết email chuyên nghiệp bằng tiếng Hàn",
+          "url": "https://videos.example.com/ko/email/1",
+          "duration": 40
+        },
+        {
+          "id": 303,
+          "title": "Thuyết trình bằng tiếng Hàn",
+          "order": 3,
+          "description": "Kỹ năng thuyết trình cơ bản",
+          "url": "https://videos.example.com/ko/presentation/1",
+          "duration": 45
+        },
+        {
+          "id": 304,
+          "title": "Giao tiếp với đồng nghiệp",
+          "order": 4,
+          "description": "Các tình huống giao tiếp hàng ngày",
+          "url": "https://videos.example.com/ko/communication/1",
+          "duration": 30
+        },
+        {
+          "id": 305,
+          "title": "Từ vựng chuyên ngành",
+          "order": 5,
+          "description": "Từ vựng theo chuyên ngành công việc",
+          "url": "https://videos.example.com/ko/vocabulary/1",
+          "duration": 35
+        },
+        {
+          "id": 306,
+          "title": "Đàm phán bằng tiếng Hàn",
+          "order": 6,
+          "description": "Kỹ năng đàm phán cơ bản",
+          "url": "https://videos.example.com/ko/negotiation/1",
+          "duration": 40
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "language": "ko",
+      "title": "Tiếng Hàn Du Lịch",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học tiếng Hàn cho mục đích du lịch",
+      "price": 900000,
+      "totalLessons": 5,
+      "enrolled": 45,
+      "duration": 150,
+      "createdAt": "2025-03-01T00:00:00Z",
+      "skillLevel": "basic",
+      "EstimalRate": 4,
+      "lessons": [
+        {
+          "id": 401,
+          "title": "Đặt phòng khách sạn",
+          "order": 1,
+          "description": "Các mẫu câu khi đặt phòng",
+          "url": "https://videos.example.com/ko/hotel/1",
+          "duration": 30
+        },
+        {
+          "id": 402,
+          "title": "Gọi món ăn",
+          "order": 2,
+          "description": "Cách gọi món trong nhà hàng",
+          "url": "https://videos.example.com/ko/restaurant/1",
+          "duration": 35
+        },
+        {
+          "id": 403,
+          "title": "Hỏi đường",
+          "order": 3,
+          "description": "Cách hỏi đường và chỉ đường",
+          "url": "https://videos.example.com/ko/directions/1",
+          "duration": 25
+        },
+        {
+          "id": 404,
+          "title": "Mua sắm khi du lịch",
+          "order": 4,
+          "description": "Các mẫu câu khi mua sắm",
+          "url": "https://videos.example.com/ko/shopping/2",
+          "duration": 30
+        },
+        {
+          "id": 405,
+          "title": "Xử lý tình huống khẩn cấp",
+          "order": 5,
+          "description": "Các mẫu câu trong tình huống khẩn cấp",
+          "url": "https://videos.example.com/ko/emergency/1",
+          "duration": 30
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "language": "ko",
+      "title": "Luyện Thi TOPIK I",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học luyện thi chứng chỉ TOPIK trình độ sơ cấp",
+      "price": 2000000,
+      "totalLessons": 10,
+      "enrolled": 18,
+      "duration": 300,
+      "createdAt": "2025-03-20T00:00:00Z",
+      "skillLevel": "intermediate",
+      "EstimalRate": 5,
+      "lessons": [
+        {
+          "id": 501,
+          "title": "Cấu trúc đề thi TOPIK",
+          "order": 1,
+          "description": "Giới thiệu về cấu trúc đề thi",
+          "url": "https://videos.example.com/ko/topik/structure",
+          "duration": 40
+        },
+        {
+          "id": 502,
+          "title": "Từ vựng thường gặp",
+          "order": 2,
+          "description": "Các từ vựng thường xuất hiện trong đề thi",
+          "url": "https://videos.example.com/ko/topik/vocabulary",
+          "duration": 45
+        },
+        {
+          "id": 503,
+          "title": "Ngữ pháp trọng điểm",
+          "order": 3,
+          "description": "Các điểm ngữ pháp quan trọng",
+          "url": "https://videos.example.com/ko/topik/grammar",
+          "duration": 50
+        },
+        {
+          "id": 504,
+          "title": "Kỹ năng nghe hiểu",
+          "order": 4,
+          "description": "Chiến lược làm bài nghe hiểu",
+          "url": "https://videos.example.com/ko/topik/listening",
+          "duration": 35
+        },
+        {
+          "id": 505,
+          "title": "Kỹ năng đọc hiểu",
+          "order": 5,
+          "description": "Phương pháp làm bài đọc hiểu",
+          "url": "https://videos.example.com/ko/topik/reading",
+          "duration": 40
+        },
+        {
+          "id": 506,
+          "title": "Đề thi mẫu",
+          "order": 6,
+          "description": "Luyện tập với đề thi mẫu",
+          "url": "https://videos.example.com/ko/topik/practice",
+          "duration": 50
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "language": "ja",
+      "title": "Tiếng Nhật Sơ Cấp N5",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học tiếng Nhật trình độ N5 cho người mới bắt đầu",
+      "price": 1500000,
+      "totalLessons": 8,
+      "enrolled": 40,
+      "duration": 240,
+      "createdAt": "2025-01-15T00:00:00Z",
+      "skillLevel": "basic",
+      "EstimalRate": 4,
+      "lessons": [
+        {
+          "id": 601,
+          "title": "Bảng chữ cái Hiragana",
+          "order": 1,
+          "description": "Học cách đọc và viết Hiragana",
+          "url": "https://videos.example.com/ja/hiragana/1",
+          "duration": 45
+        },
+        {
+          "id": 602,
+          "title": "Bảng chữ cái Katakana",
+          "order": 2,
+          "description": "Học cách đọc và viết Katakana",
+          "url": "https://videos.example.com/ja/katakana/1",
+          "duration": 45
+        },
+        {
+          "id": 603,
+          "title": "Chào hỏi cơ bản",
+          "order": 3,
+          "description": "Các mẫu câu chào hỏi hàng ngày",
+          "url": "https://videos.example.com/ja/greeting/1",
+          "duration": 30
+        },
+        {
+          "id": 604,
+          "title": "Giới thiệu bản thân",
+          "order": 4,
+          "description": "Cách giới thiệu bản thân bằng tiếng Nhật",
+          "url": "https://videos.example.com/ja/introduction/1",
+          "duration": 35
+        },
+        {
+          "id": 605,
+          "title": "Số đếm cơ bản",
+          "order": 5,
+          "description": "Học số đếm từ 1-100",
+          "url": "https://videos.example.com/ja/numbers/1",
+          "duration": 40
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "language": "ja",
+      "title": "Tiếng Nhật Giao Tiếp Công Sở",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học tiếng Nhật cho môi trường làm việc",
+      "price": 2200000,
+      "totalLessons": 7,
+      "enrolled": 25,
+      "duration": 210,
+      "createdAt": "2025-02-10T00:00:00Z",
+      "skillLevel": "intermediate",
+      "EstimalRate": 5,
+      "lessons": [
+        {
+          "id": 701,
+          "title": "Giao tiếp trong công ty",
+          "order": 1,
+          "description": "Các mẫu câu giao tiếp nơi công sở",
+          "url": "https://videos.example.com/ja/office/1",
+          "duration": 35
+        },
+        {
+          "id": 702,
+          "title": "Viết email công việc",
+          "order": 2,
+          "description": "Cách viết email chuyên nghiệp bằng tiếng Nhật",
+          "url": "https://videos.example.com/ja/email/1",
+          "duration": 40
+        },
+        {
+          "id": 703,
+          "title": "Thuyết trình bằng tiếng Nhật",
+          "order": 3,
+          "description": "Kỹ năng thuyết trình cơ bản",
+          "url": "https://videos.example.com/ja/presentation/1",
+          "duration": 45
+        },
+        {
+          "id": 704,
+          "title": "Từ vựng chuyên ngành",
+          "order": 4,
+          "description": "Từ vựng theo chuyên ngành công việc",
+          "url": "https://videos.example.com/ja/vocabulary/1",
+          "duration": 35
+        },
+        {
+          "id": 705,
+          "title": "Đàm phán bằng tiếng Nhật",
+          "order": 5,
+          "description": "Kỹ năng đàm phán cơ bản",
+          "url": "https://videos.example.com/ja/negotiation/1",
+          "duration": 40
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "language": "ja",
+      "title": "Tiếng Nhật Du Lịch",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học tiếng Nhật cho mục đích du lịch",
+      "price": 1000000,
+      "totalLessons": 6,
+      "enrolled": 50,
+      "duration": 180,
+      "createdAt": "2025-03-05T00:00:00Z",
+      "skillLevel": "basic",
+      "EstimalRate": 4,
+      "lessons": [
+        {
+          "id": 801,
+          "title": "Đặt phòng khách sạn",
+          "order": 1,
+          "description": "Các mẫu câu khi đặt phòng",
+          "url": "https://videos.example.com/ja/hotel/1",
+          "duration": 30
+        },
+        {
+          "id": 802,
+          "title": "Gọi món ăn",
+          "order": 2,
+          "description": "Cách gọi món trong nhà hàng",
+          "url": "https://videos.example.com/ja/restaurant/1",
+          "duration": 35
+        },
+        {
+          "id": 803,
+          "title": "Hỏi đường",
+          "order": 3,
+          "description": "Cách hỏi đường và chỉ đường",
+          "url": "https://videos.example.com/ja/directions/1",
+          "duration": 25
+        },
+        {
+          "id": 804,
+          "title": "Mua sắm khi du lịch",
+          "order": 4,
+          "description": "Các mẫu câu khi mua sắm",
+          "url": "https://videos.example.com/ja/shopping/1",
+          "duration": 30
+        },
+        {
+          "id": 805,
+          "title": "Xử lý tình huống khẩn cấp",
+          "order": 5,
+          "description": "Các mẫu câu trong tình huống khẩn cấp",
+          "url": "https://videos.example.com/ja/emergency/1",
+          "duration": 30
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "language": "ja",
+      "title": "Luyện Thi JLPT N4",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học luyện thi chứng chỉ JLPT trình độ N4",
+      "price": 2500000,
+      "totalLessons": 10,
+      "enrolled": 20,
+      "duration": 300,
+      "createdAt": "2025-03-25T00:00:00Z",
+      "skillLevel": "intermediate",
+      "EstimalRate": 5,
+      "lessons": [
+        {
+          "id": 901,
+          "title": "Cấu trúc đề thi JLPT N4",
+          "order": 1,
+          "description": "Giới thiệu về cấu trúc đề thi",
+          "url": "https://videos.example.com/ja/jlpt/structure",
+          "duration": 40
+        },
+        {
+          "id": 902,
+          "title": "Từ vựng thường gặp N4",
+          "order": 2,
+          "description": "Các từ vựng thường xuất hiện trong đề thi",
+          "url": "https://videos.example.com/ja/jlpt/vocabulary",
+          "duration": 45
+        },
+        {
+          "id": 903,
+          "title": "Ngữ pháp trọng điểm N4",
+          "order": 3,
+          "description": "Các điểm ngữ pháp quan trọng",
+          "url": "https://videos.example.com/ja/jlpt/grammar",
+          "duration": 50
+        },
+        {
+          "id": 904,
+          "title": "Kỹ năng nghe hiểu N4",
+          "order": 4,
+          "description": "Chiến lược làm bài nghe hiểu",
+          "url": "https://videos.example.com/ja/jlpt/listening",
+          "duration": 35
+        },
+        {
+          "id": 905,
+          "title": "Kỹ năng đọc hiểu N4",
+          "order": 5,
+          "description": "Phương pháp làm bài đọc hiểu",
+          "url": "https://videos.example.com/ja/jlpt/reading",
+          "duration": 40
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "language": "zh",
+      "title": "Tiếng Trung Cơ Bản",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học tiếng Trung cho người mới bắt đầu",
+      "price": 1300000,
+      "totalLessons": 7,
+      "enrolled": 38,
+      "duration": 210,
+      "createdAt": "2025-01-20T00:00:00Z",
+      "skillLevel": "basic",
+      "EstimalRate": 4,
+      "lessons": [
+        {
+          "id": 1001,
+          "title": "Phiên âm Pinyin",
+          "order": 1,
+          "description": "Học cách đọc phiên âm tiếng Trung",
+          "url": "https://videos.example.com/zh/pinyin/1",
+          "duration": 45
+        },
+        {
+          "id": 1002,
+          "title": "Chào hỏi cơ bản",
+          "order": 2,
+          "description": "Các mẫu câu chào hỏi hàng ngày",
+          "url": "https://videos.example.com/zh/greeting/1",
+          "duration": 30
+        },
+        {
+          "id": 1003,
+          "title": "Giới thiệu bản thân",
+          "order": 3,
+          "description": "Cách giới thiệu bản thân bằng tiếng Trung",
+          "url": "https://videos.example.com/zh/introduction/1",
+          "duration": 35
+        },
+        {
+          "id": 1004,
+          "title": "Số đếm cơ bản",
+          "order": 4,
+          "description": "Học số đếm từ 1-100",
+          "url": "https://videos.example.com/zh/numbers/1",
+          "duration": 40
+        },
+        {
+          "id": 1005,
+          "title": "Mua sắm cơ bản",
+          "order": 5,
+          "description": "Các mẫu câu khi đi mua sắm",
+          "url": "https://videos.example.com/zh/shopping/1",
+          "duration": 30
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "language": "zh",
+      "title": "Tiếng Trung Thương Mại",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học tiếng Trung cho mục đích thương mại",
+      "price": 1900000,
+      "totalLessons": 8,
+      "enrolled": 24,
+      "duration": 240,
+      "createdAt": "2025-02-20T00:00:00Z",
+      "skillLevel": "intermediate",
+      "EstimalRate": 5,
+      "lessons": [
+        {
+          "id": 1101,
+          "title": "Giao tiếp trong đàm phán",
+          "order": 1,
+          "description": "Các mẫu câu thường dùng trong đàm phán",
+          "url": "https://videos.example.com/zh/negotiation/1",
+          "duration": 40
+        },
+        {
+          "id": 1102,
+          "title": "Viết email thương mại",
+          "order": 2,
+          "description": "Cách viết email chuyên nghiệp bằng tiếng Trung",
+          "url": "https://videos.example.com/zh/email/1",
+          "duration": 45
+        },
+        {
+          "id": 1103,
+          "title": "Thuyết trình bằng tiếng Trung",
+          "order": 3,
+          "description": "Kỹ năng thuyết trình cơ bản",
+          "url": "https://videos.example.com/zh/presentation/1",
+          "duration": 50
+        },
+        {
+          "id": 1104,
+          "title": "Từ vựng thương mại",
+          "order": 4,
+          "description": "Từ vựng chuyên ngành thương mại",
+          "url": "https://videos.example.com/zh/vocabulary/1",
+          "duration": 35
+        },
+        {
+          "id": 1105,
+          "title": "Hợp đồng thương mại",
+          "order": 5,
+          "description": "Các thuật ngữ trong hợp đồng",
+          "url": "https://videos.example.com/zh/contract/1",
+          "duration": 40
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "language": "zh",
+      "title": "Tiếng Trung Du Lịch",
+      "thumbnail": "https://cdn0918.cdn4s1.com/media/blog-images/hinh-con-cho-meme/hinh-con-cho-meme-1.jpg",
+      "description": "Khóa học tiếng Trung cho mục đích du lịch",
+      "price": 950000,
+      "totalLessons": 6,
+      "enrolled": 42,
+      "duration": 180,
+      "createdAt": "2025-03-10T00:00:00Z",
+      "skillLevel": "basic",
+      "EstimalRate": 4,
+      "lessons": [
+        {
+          "id": 1201,
+          "title": "Đặt phòng khách sạn",
+          "order": 1,
+          "description": "Các mẫu câu khi đặt phòng",
+          "url": "https://videos.example.com/zh/hotel/1",
+          "duration": 30
+        },
+        {
+          "id": 1202,
+          "title": "Gọi món ăn",
+          "order": 2,
+          "description": "Cách gọi món trong nhà hàng",
+          "url": "https://videos.example.com/zh/restaurant/1",
+          "duration": 35
+        },
+        {
+          "id": 1203,
+          "title": "Hỏi đường",
+          "order": 3,
+          "description": "Cách hỏi đường và chỉ đường",
+          "url": "https://videos.example.com/zh/directions/1",
+          "duration": 25
+        },
+        {
+          "id": 1204,
+          "title": "Mua sắm khi du lịch",
+          "order": 4,
+          "description": "Các mẫu câu khi mua sắm",
+          "url": "https://videos.example.com/zh/shopping/1",
+          "duration": 30
+        },
+        {
+          "id": 1205,
+          "title": "Xử lý tình huống khẩn cấp",
+          "order": 5,
+          "description": "Các mẫu câu trong tình huống khẩn cấp",
+          "url": "https://videos.example.com/zh/emergency/1",
+          "duration": 30
+        }
+      ]
+    }
+  ],
+  "enrollments": [
+    {
+      "id": 1,
+      "userId": 1,
+      "courseId": 1,
+      "enrolledAt": "2025-01-20T14:30:00Z",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "courseId": 3,
+      "enrolledAt": "2025-02-18T09:00:00Z",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "courseId": 6,
+      "enrolledAt": "2025-01-25T16:15:00Z",
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "courseId": 9,
+      "enrolledAt": "2025-03-28T11:45:00Z",
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "courseId": 11,
+      "enrolledAt": "2025-02-25T13:20:00Z",
+      "status": "active"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "userId": 1,
+      "courseId": 1,
+      "rating": 5,
+      "comment": "Khóa học rất hữu ích, nhiều video chất lượng",
+      "createdAt": "2025-03-10T11:20:00Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "courseId": 3,
+      "rating": 4,
+      "comment": "Nội dung ổn, nhưng nên có thêm bài luyện tập",
+      "createdAt": "2025-03-15T09:00:00Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "courseId": 6,
+      "rating": 5,
+      "comment": "Dễ hiểu và phù hợp với người mới bắt đầu học tiếng Nhật",
+      "createdAt": "2025-03-18T14:30:00Z"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "courseId": 9,
+      "rating": 5,
+      "comment": "Khóa luyện thi rất sát với đề thật, giúp mình cải thiện nhiều",
+      "createdAt": "2025-03-30T10:45:00Z"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "courseId": 11,
+      "rating": 4,
+      "comment": "Nội dung hay nhưng tốc độ giảng hơi nhanh",
+      "createdAt": "2025-04-01T08:50:00Z"
+    }
+  ],
+  "bills": [
+    {
+      "id": 1,
+      "userId": 1,
+      "courseId": 1,
+      "amount": 1500000,
+      "paidAt": "2025-01-20T14:35:00Z",
+      "accepted": true,
+      "paid": true
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "courseId": 3,
+      "amount": 1800000,
+      "paidAt": "2025-02-18T09:05:00Z",
+      "accepted": true,
+      "paid": true
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "courseId": 6,
+      "amount": 1500000,
+      "paidAt": "2025-01-25T16:20:00Z",
+      "accepted": true,
+      "paid": true
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "courseId": 9,
+      "amount": 2500000,
+      "paidAt": "2025-03-28T11:50:00Z",
+      "accepted": true,
+      "paid": true
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "courseId": 11,
+      "amount": 1900000,
+      "paidAt": "2025-02-25T13:25:00Z",
+      "accepted": true,
+      "paid": true
+    }
+  ]
+}
