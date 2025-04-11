@@ -1,18 +1,21 @@
 // import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
-function PrivateRoutes () {
-  const isAuthen = true
+function PrivateRoutes ({role}) {
+  const user = localStorage.getItem("user");
+  const token = user.token;
+  const roleUser = user.role;
+
+  if(!token) {
+    <Navigate to="/login" replace/>
+  }
+
+  if (roleUser === role) {
+    <Navigate to={`/${role}`}/>
+  }
+
   return (
-    <>
-      {isAuthen ? (
-        <Outlet />
-      ) : (
-        <>
-          <Navigate to="/" />
-        </> 
-      )}
-    </>
+    <Outlet />
   );
 }
 export default PrivateRoutes;

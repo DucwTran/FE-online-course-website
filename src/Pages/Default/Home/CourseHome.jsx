@@ -1,7 +1,22 @@
-import { ButtonRoute } from "../../Components/ButtonRoute";
-import { CardCourse } from "../../Components/CardCourse";
+import { useEffect, useState } from "react";
+import { ButtonRoute } from "../../../Components/ButtonRoute";
+import { CardCourse } from "../../../Components/CardCourse";
+import { getAllCourses } from "../../../Services/courseService";
 
 function CourseHome() {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const res = await getAllCourses();
+      if (res) {
+        const popularCourse = res.slice(0, 6);
+        setCourses(popularCourse);
+      }
+    };
+    fetchAPI();
+  }, []);
+  console.log(courses);
   return (
     <div className="bg-[url(/image/bg-course-home.png)]">
       <div className="max-w-[1080px] mx-auto pb-[150px]">
@@ -19,24 +34,11 @@ function CourseHome() {
           </div>
         </div>
         <div className="grid gap-x-16 gap-y-20 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
-          <div className="flex items-center justify-center w-full">
-            <CardCourse />
-          </div>
-          <div className="flex items-center justify-center w-full">
-            <CardCourse />
-          </div>
-          <div className="flex items-center justify-center w-full">
-            <CardCourse />
-          </div>
-          <div className="flex items-center justify-center w-full">
-            <CardCourse />
-          </div>
-          <div className="flex items-center justify-center w-full">
-            <CardCourse />
-          </div>
-          <div className="flex items-center justify-center w-full">
-            <CardCourse />
-          </div>
+          {courses.map((item, index) => (
+            <div className="flex items-center justify-center w-full">
+              <CardCourse key={index} course={item} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

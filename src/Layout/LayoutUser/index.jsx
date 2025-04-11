@@ -1,4 +1,4 @@
-function layoutUser() {
+function LayoutUser() {
   return (
     <div>
       layoutUser
@@ -6,4 +6,4 @@ function layoutUser() {
   )
 }
 
-export default layoutUser
+export default LayoutUser
