@@ -10,7 +10,7 @@ export function CardCourse(props) {
   return (
     <div className="flex justify-center items-center w-[330px] max-h-[1000px] 4xl:scale-110">
       <div className="p-4 border-1 border-dotted border-[#704FE6] w-[350px] rounded-xl ">
-        <div className="bg-[url('/image/img-course.png')] h-[253px] w-full rounded-xl bg-cover"></div>
+        <div style={{ backgroundImage: `url("${course.thumbnail}")`}} className="h-[253px] w-full rounded-xl bg-cover"></div>
         <div className="flex flex-col items-center justify-center ">
           <h2 className="max-w-[85%] font-[600] text-[20px] mt-[20px] text-left h-[60px] leading-6">
             {course.title}
