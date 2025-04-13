@@ -2,7 +2,7 @@ import { Button } from 'antd'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function GoBack() {
+export function GoBack() {
   const navigate = useNavigate()
   return (
     <div>
@@ -13,4 +13,4 @@ function GoBack() {
   )
 }
 
-export default GoBack
+

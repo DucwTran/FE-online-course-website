@@ -3,22 +3,28 @@ import { motion } from "framer-motion";
 import { Edit, Search, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getAllCourses } from "../../../Services/courseService";
+import { Link } from "react-router-dom";
+import DeleteCourse from "./DeleteCourse";
 
 const CoursesTable = () => {
   const [courses, setCourses] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const fetchAPI = async () => {
+    const res = await getAllCourses();
+    if (res) {
+      setCourses(res);
+      setFilteredProducts(res);
+    }
+  };
 
   useEffect(() => {
-    const fetchAPI = async () => {
-      const res = await getAllCourses();
-      if (res) {
-        setCourses(res);
-				setFilteredProducts(res)
-      }
-    };
     fetchAPI();
   }, []);
+
+  const handleReload = () => {
+    fetchAPI();
+  };
 
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
@@ -31,7 +37,8 @@ const CoursesTable = () => {
 
     setFilteredProducts(filtered);
   };
-	console.log(courses)
+
+
   return (
     <motion.div
       className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 mb-8"
@@ -104,13 +111,17 @@ const CoursesTable = () => {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                     {course.totalLessions}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                    <button className="text-indigo-400 hover:text-indigo-300 mr-2 cursor-pointer">
-                      <Edit size={18} />
-                    </button>
-                    <button className="text-red-400 hover:text-red-300 cursor-pointer">
-                      <Trash2 size={18} />
-                    </button>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 flex">
+                    <div
+                      className="text-indigo-400 hover:text-indigo-300 mr-2 cursor-pointer"
+                    >
+                      <Link to={`/admin/detail-course/${course.id}`}>
+                        <Edit size={18} />
+                      </Link>
+                    </div>
+                    <div className="text-red-400 hover:text-red-300 cursor-pointer">
+                      <DeleteCourse course={course} onReload={handleReload}/>
+                    </div>
                   </td>
                 </motion.tr>
               ))}

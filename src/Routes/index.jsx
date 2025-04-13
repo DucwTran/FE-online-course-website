@@ -17,6 +17,9 @@ import OverviewCourse from "../Pages/Admin/OverviewCourse";
 import OverviewUser from "../Pages/Admin/OverviewUser";
 import OverviewAdmin from "../Pages/Admin/OverviewAdmin";
 import SettingsPage from "../Pages/Admin/SettingsPage";
+import DetailCourseAdmin from "../Pages/Admin/DetailCourse";
+import DetailAdmin from "../Pages/Admin/OverviewAdmin/DetailAdmin";
+import DetailStudent from "../Pages/Admin/OverviewUser/DetailStudent";
 
 export const Routes = [
   {
@@ -85,6 +88,18 @@ export const Routes = [
           {
             path: "settings", 
             element: <SettingsPage />
+          },
+          {
+            path: "detail-course/:id",
+            element: <DetailCourseAdmin />
+          },
+          {
+            path: "detail-admin/:id",
+            element: <DetailAdmin />
+          },
+          {
+            path: "detail-student/:id",
+            element: <DetailStudent />
           }
         ],
       },

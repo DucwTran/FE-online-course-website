@@ -4,22 +4,30 @@ import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import { getStudent } from "../../../Services/userService";
 import { EyeOutlined, EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import DeleteStudent from "./DeleteStudent";
+import EditStudent from "./EditStudent";
+import { Link } from "react-router-dom";
+import { Button } from "antd";
 
 const UsersTable = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
 
+  const fetchAPI = async () => {
+    const res = await getStudent();
+    if (res) {
+      setUsers(res);
+      setFilteredUsers(res);
+    }
+  };
   useEffect(() => {
-    const fetchAPI = async () => {
-      const res = await getStudent();
-      if (res) {
-        setUsers(res);
-        setFilteredUsers(res);
-      }
-    };
     fetchAPI();
   }, []);
+
+  const handleReload = () => {
+    fetchAPI();
+  };
 
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
@@ -82,31 +90,7 @@ const UsersTable = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-								<td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0 h-10 w-10">
-                      <div
-                        style={{
-                          backgroundImage: user.avatar
-                            ? `url("${user.avatar}")`
-                            : "none",
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          backgroundRepeat: "no-repeat",
-                        }}
-                        className="h-10 w-10 rounded-full flex items-center justify-center text-white font-semibold"
-                      >
-                    
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-100"></div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-									{user.fullName}
-                </td>
+                <td className="px-6 py-4 whitespace-nowrap">{user.fullName}</td>
 
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-300">{user.email}</div>
@@ -119,7 +103,7 @@ const UsersTable = () => {
 
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span
-                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                    className={`px-3 py-1 rounded-[10px] inline-flex text-xs leading-5 font-semibold ${
                       user.status === "active"
                         ? "bg-green-800 text-green-100"
                         : "bg-red-800 text-red-100"
@@ -129,16 +113,20 @@ const UsersTable = () => {
                   </span>
                 </td>
 
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  <button className="text-green-400 hover:text-red-300 mr-3">
-                    <EyeOutlined /> View
-                  </button>
-                  <button className="text-indigo-400 hover:text-indigo-300 mr-3">
-                    <EditOutlined /> Edit
-                  </button>
-                  <button className="text-red-400 hover:text-red-300">
-                    <DeleteOutlined /> Delete
-                  </button>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 flex">
+                  <div className="text-green-400 hover:text-red-300 mr-2 cursor-pointer">
+                    <Link to={`/admin/detail-student/${user.id}`}>
+                      <Button className="w-[30px]">
+                        <EyeOutlined />
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className="text-indigo-400 hover:text-indigo-300 mr-2 cursor-pointer">
+                    <EditStudent student={user} onReload={handleReload} />
+                  </div>
+                  <div className="text-red-400 hover:text-red-300 cursor-pointer">
+                    <DeleteStudent student={user} onReload={handleReload} />
+                  </div>
                 </td>
               </motion.tr>
             ))}
