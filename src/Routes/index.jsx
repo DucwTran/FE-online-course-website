@@ -20,6 +20,7 @@ import SettingsPage from "../Pages/Admin/SettingsPage";
 import DetailCourseAdmin from "../Pages/Admin/DetailCourse";
 import DetailAdmin from "../Pages/Admin/OverviewAdmin/DetailAdmin";
 import DetailStudent from "../Pages/Admin/OverviewUser/DetailStudent";
+import CreateCourse from "../Pages/Admin/OverviewCourse/CreateCourse";
 
 export const Routes = [
   {
@@ -100,6 +101,10 @@ export const Routes = [
           {
             path: "detail-student/:id",
             element: <DetailStudent />
+          }, 
+          {
+            path: "create-course",
+            element: <CreateCourse />
           }
         ],
       },

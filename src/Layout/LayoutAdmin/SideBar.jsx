@@ -21,8 +21,8 @@ const SIDEBAR_ITEMS = [
   { name: "Courses", icon: ShoppingBag, color: "#8B5CF6", href: "courses" },
   { name: "Students", icon: Users, color: "#EC4899", href: "users" },
   { name: "Admins", icon: User2, color: "#10B981", href: "admins" },
-  // { name: "Orders", icon: ShoppingCart, color: "#F59E0B", href: "orders" },
-  // { name: "Analytics", icon: TrendingUp, color: "#3B82F6", href: "analytics" },
+  { name: "Orders", icon: ShoppingCart, color: "#F59E0B", href: "orders" },
+  { name: "Analytics", icon: TrendingUp, color: "#3B82F6", href: "analytics" },
   { name: "Settings", icon: Settings, color: "#6EE7B7", href: "settings" },
 ];
 

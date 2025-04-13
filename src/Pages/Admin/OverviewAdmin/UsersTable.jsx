@@ -13,7 +13,8 @@ const UsersTable = () => {
   const [admins, setAdmins] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  const id = user.id;
   const fetchAPI = async () => {
     const res = await getAdmin();
     if (res) {
@@ -124,7 +125,7 @@ const UsersTable = () => {
                     </Link>
                   </div>
                   <div className="text-indigo-400 hover:text-indigo-300 mr-2 cursor-pointer">
-                    <EditAdmin admin={user} onReLoad={handleReload} />
+                    <EditAdmin admin={user} onReLoad={handleReload} id={id}/>
                   </div>
                   <div className="text-red-400 hover:text-red-300 cursor-pointer">
                     <DeleteAdmin admin={user} onReLoad={handleReload} />

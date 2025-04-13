@@ -15,7 +15,6 @@ function Register() {
   const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
-    console.log(values);
     const token = generateToken();
     const checkExistEmail = await checkExist("email", values.email);
     const allUser = await getAllUsers();

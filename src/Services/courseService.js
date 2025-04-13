@@ -1,7 +1,12 @@
-import { get, patch, del } from "../Utils/request";
+import { post, get, patch, del } from "../Utils/request";
 
 export const getAllCourses = async () => {
   const result = await get("courses");
+  return result;
+};
+
+export const createCourse = async (options) => {
+  const result = await post("courses", options);
   return result;
 };
 

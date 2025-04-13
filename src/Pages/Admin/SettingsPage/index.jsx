@@ -1,5 +1,5 @@
 import HeaderAdmin from "../../../Components/HeaderAdminPage";
-// import DetailAccount from "./DetailAccount";
+import DetailAccount from "./DetailAccount";
 import LogoutAdmin from "./LogoutAdmin";
 
 const SettingsPage = () => {
@@ -8,7 +8,7 @@ const SettingsPage = () => {
 			<HeaderAdmin title='Settings' />
 
 			<main className='max-w-7xl mx-auto py-6 px-4 lg:px-8'>
-				{/* <DetailAccount /> */}
+				<DetailAccount />
 				<LogoutAdmin />
 			</main>
 		</div>

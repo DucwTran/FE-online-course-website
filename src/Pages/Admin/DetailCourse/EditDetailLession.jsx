@@ -67,13 +67,18 @@ function EditDetailLession(props) {
                 <Input />
               </Form.Item>
             </Col>
-            <Col span={16}>
+            <Col span={24}>
               <Form.Item label="URL" name="url">
                 <Input />
               </Form.Item>
             </Col>
-            <Col span={8}>
+            <Col span={12}>
               <Form.Item label="Duration" name="duration">
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="Created At" name="createdAt">
                 <Input />
               </Form.Item>
             </Col>

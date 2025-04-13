@@ -3,22 +3,20 @@ import { EyeTwoTone, EyeInvisibleOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { login, updateLastLogin } from "../../../Services/userService";
 import { getFormattedDate } from "../../../Utils/dateTime";
-import { useDispatch } from "react-redux";
-import { loginUser } from "../../../Redux/userSlice";
+// import { useDispatch } from "react-redux";
+// import { loginUser } from "../../../Redux/userSlice";
 
 function Login() {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch();
 
   const handleSubmit = async (values) => {
     const data = await login(values.email, values.password);
     if (data.length > 0 && data[0].status === "active") {
       localStorage.setItem("user", JSON.stringify(data[0]));
-      dispatch(loginUser({
-        id: data[0].id
-      }))
+      // dispatch(loginUser(data[0].id));
       const dateTime = {
         lastLogin: getFormattedDate(),
       };

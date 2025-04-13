@@ -13,11 +13,9 @@ import {
 import { useState } from "react";
 import { EditOutlined } from "@ant-design/icons";
 import { updateUser } from "../../../Services/userService";
-import { useSelector } from "react-redux";
 
 function EditAdmin(props) {
-  const id = useSelector((state) => state.user.id);
-  const { admin, onReload } = props;
+  const { admin, onReload, id } = props;
   const options = [
     { value: "admin", label: "Admin" },
     { value: "student", label: "Student" },
@@ -53,8 +51,6 @@ function EditAdmin(props) {
       });
     }
   };
-  console.log(admin.id) 
-  console.log(id)
   return (
     <>
       {contextHolder}

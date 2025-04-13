@@ -11,6 +11,7 @@ import { getLessionsById } from "../../../Services/lessionSerive";
 import EditDetailCourse from "./EditDetailCourse";
 import { Button } from "antd";
 import DeleteLession from "./DeleteLession";
+import AddLession from "./AddLession";
 
 function DetailCourseAdmin() {
   const param = useParams();
@@ -39,13 +40,12 @@ function DetailCourseAdmin() {
     fetchAPICourse();
     fetchAPILession();
   };
-  console.log(lessions);
   return (
     <div className="flex-1 overflow-auto relative z-10">
       <HeaderAdmin title={`Detail Course: ${id}`} />
 
-      <main className="max-w-[1480px] mx-auto py-6 px-4 lg:px-8">
-        <GoBack />
+      <main className="max-w-[1180px] mx-auto py-6 px-4 lg:px-8">
+        <GoBack target="/admin/courses"/>
         <motion.div
           className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 mb-[20px]"
           initial={{ opacity: 0, y: 20 }}
@@ -133,8 +133,13 @@ function DetailCourseAdmin() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="ml-[80px] text-3xl font-bold mb-[30px]">
-            Danh sách các bài giảng
+          <div className="flex justify-between items-center mb-[30px]">
+            <div className="ml-[50px] text-3xl font-bold">
+              Danh sách các bài giảng
+            </div>
+            <div className="mr-[30px]">
+              <AddLession idCourse={course?.id}/>
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-700">
@@ -143,9 +148,9 @@ function DetailCourseAdmin() {
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                     Name
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  {/* <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                     Description
-                  </th>
+                  </th> */}
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                     Url
                   </th>
@@ -170,9 +175,9 @@ function DetailCourseAdmin() {
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100 flex gap-2 items-center">
                         {lession.title}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                      {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                         {lession.description}
-                      </td>
+                      </td> */}
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
                         <Video url={lession.url} name={lession.title} />
                       </td>
@@ -207,4 +212,3 @@ function DetailCourseAdmin() {
 }
 
 export default DetailCourseAdmin;
-
