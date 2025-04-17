@@ -5,6 +5,11 @@ export const getAllCourses = async () => {
   return result;
 };
 
+export const getAllCoursesNotEnroll = async () => { //chưa dùng
+  const result = await get("coursesNotEnroll");
+  return result;
+};
+
 export const createCourse = async (options) => {
   const result = await post("courses", options);
   return result;
@@ -24,3 +29,4 @@ export const deleteCourse = async (id) => {
   const result = await del(`courses/${id}`);
   return result;
 };
+

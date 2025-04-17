@@ -4,7 +4,7 @@ import {
   FieldTimeOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDetailCourse } from "../../../Services/courseService";
 
@@ -22,22 +22,25 @@ function DetailCourse() {
     };
     fetchAPI();
   }, [id]);
-  console.log(course)
+  console.log(course);
   return (
     <>
       {course ? (
         <>
           <div className="">
-            <div className="flex flex-col">
+            {/* <div className="flex flex-col">
               <div className="bg-[url(/image/bg-header-all-courses.png)] h-[170px] md:h-[250px] w-full bg-cover flex justify-center items-center text-5xl md:text-[80px] font-[600]">
                 Course Details
               </div>
-            </div>
+            </div> */}
             <div className="flex-1 bg-[url(/image/bg-course-home.png)] pb-[100px]  bg-cover">
               <div className="max-w-[1280px] mx-auto pb-[50px] mt-10">
                 <div className="grid grid-cols-3 gap-10">
                   <div className="col-span-2">
-                    <div style={{ backgroundImage: `url("${course.thumbnail}")`}} className={`w-full h-[500px] bg-cover rounded-xl`}></div>
+                    <div
+                      style={{ backgroundImage: `url("${course.thumbnail}")` }}
+                      className={`w-full h-[500px] bg-cover rounded-xl`}
+                    ></div>
                     <div className="ml-5">
                       <div className="mt-7 flex gap-5 items-center">
                         <Flex gap="middle" vertical>
@@ -55,7 +58,7 @@ function DetailCourse() {
                         <div className="px-3 py-2 flex justify-between items-center text-[15px] gap-2 max-w-[500px]">
                           <div className="flex justify-center items-center gap-1">
                             <BookOutlined />{" "}
-                            <span>Lession: {course.totalLession}</span>
+                            <span>Lession: {course.totalLessions}</span>
                           </div>
                           <div className="flex justify-center items-center gap-1">
                             <FieldTimeOutlined />{" "}
@@ -77,7 +80,10 @@ function DetailCourse() {
                     </div>
                   </div>
                   <div className="bg-[#E8E8F4] h-[700px] flex flex-col items-center justify-center py-5">
-                    <div style={{ backgroundImage: `url("${course.thumbnail}")`}} className={`bg-cover w-[80%] h-[230px] rounded-xl`}></div>
+                    <div
+                      style={{ backgroundImage: `url("${course.thumbnail}")` }}
+                      className={`bg-cover w-[80%] h-[230px] rounded-xl`}
+                    ></div>
                     <div className="mt-5 flex justify-between w-[70%] mx-auto">
                       <div className="text-xl text-[#333931]">Course Fee</div>
                       <div className="flex justify-center text-2xl font-bold">
@@ -85,7 +91,7 @@ function DetailCourse() {
                       </div>
                     </div>
                     <div className="cursor-pointer mt-5 w-[80%] text-2xl mx-auto h-[60px] px-4 py-8 rounded-xl bg-[#7768E5] text-white tracking-wide flex justify-center items-center">
-                      BUY NOW
+                      <Link to={"/login"}> BUY NOW</Link>
                     </div>
                     <div className="w-[80%] mx-auto mt-10 text-[19px]">
                       <div className="flex justify-between items-center mb-3">

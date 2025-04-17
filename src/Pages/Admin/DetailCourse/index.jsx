@@ -7,17 +7,19 @@ import { getDetailCourse } from "../../../Services/courseService";
 import Video from "./Video";
 import { GoBack } from "../../../Components/GoBack";
 import EditDetailLession from "./EditDetailLession";
-import { getLessionsById } from "../../../Services/lessionSerive";
+import { getLessionsById } from "../../../Services/lessionService";
 import EditDetailCourse from "./EditDetailCourse";
 import { Button } from "antd";
 import DeleteLession from "./DeleteLession";
 import AddLession from "./AddLession";
+import { getReviewById } from "../../../Services/reviewService";
 
 function DetailCourseAdmin() {
   const param = useParams();
   const id = param.id;
   const [course, setCourse] = useState();
-  const [lessions, setLessions] = useState();
+  const [lessions, setLessions] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   const fetchAPICourse = useCallback(async () => {
     const res = await getDetailCourse(id);
@@ -31,10 +33,17 @@ function DetailCourseAdmin() {
       setLessions(res);
     }
   }, [id]);
+  const fetchAPIReview = useCallback(async () => {
+    const res = await getReviewById(id);
+    if (res) {
+      setReviews(res);
+    }
+  }, [id]);
   useEffect(() => {
     fetchAPICourse();
     fetchAPILession();
-  }, [fetchAPICourse, fetchAPILession]);
+    fetchAPIReview();
+  }, [fetchAPICourse, fetchAPILession, fetchAPIReview]);
 
   const handleReload = () => {
     fetchAPICourse();
@@ -45,7 +54,7 @@ function DetailCourseAdmin() {
       <HeaderAdmin title={`Detail Course: ${id}`} />
 
       <main className="max-w-[1180px] mx-auto py-6 px-4 lg:px-8">
-        <GoBack target="/admin/courses"/>
+        <GoBack target="/admin/courses" />
         <motion.div
           className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 mb-[20px]"
           initial={{ opacity: 0, y: 20 }}
@@ -112,6 +121,10 @@ function DetailCourseAdmin() {
                 <div> {course.skillLevel}</div>
               </div>
               <div className="flex gap-5 mb-[20px]">
+                <div className="w-[180px] text-gray-300 uppercase">Active:</div>{" "}
+                <div className="uppercase"> {course.status}</div>
+              </div>
+              <div className="flex gap-5 mb-[20px]">
                 <div className="w-[180px] text-gray-300 uppercase">Rating:</div>{" "}
                 <div> {course.EstimalRate}</div>
               </div>
@@ -128,7 +141,7 @@ function DetailCourseAdmin() {
         </motion.div>
 
         <motion.div
-          className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700"
+          className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 mb-[20px]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -138,7 +151,7 @@ function DetailCourseAdmin() {
               Danh sách các bài giảng
             </div>
             <div className="mr-[30px]">
-              <AddLession idCourse={course?.id}/>
+              <AddLession idCourse={course?.id} />
             </div>
           </div>
           <div className="overflow-x-auto">
@@ -204,6 +217,36 @@ function DetailCourseAdmin() {
                 </tbody>
               )}
             </table>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="flex justify-between items-center mb-[30px]">
+            <div className="ml-[50px] text-3xl font-bold">
+              Các nhận xét của học viên
+            </div>
+          </div>
+          <div className="overflow-x-auto">
+            {reviews.length === 0 ? (
+              <div className="text-center text-gray-500">
+                No reviews available.
+              </div>
+            ) : (
+              reviews.map((review) => (
+                <div className="mb-8 ml-[85px]" key={review.id}>
+                  <div className="flex gap-2">
+                    <div className="font-bold">{review.nameUser} ,</div>
+                    <div className="text-gray-400">at {review.createdAt}</div>
+                  </div>
+                  <div className="italic ml-2">{review.comment}</div>
+                </div>
+              ))
+            )}
           </div>
         </motion.div>
       </main>

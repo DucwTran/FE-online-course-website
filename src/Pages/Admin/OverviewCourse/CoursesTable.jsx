@@ -37,8 +37,6 @@ const CoursesTable = () => {
 
     setFilteredProducts(filtered);
   };
-
-
   return (
     <motion.div
       className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 mb-8"
@@ -87,44 +85,44 @@ const CoursesTable = () => {
 
           {courses && (
             <tbody className="divide-y divide-gray-700">
-              {filteredProducts.map((course) => (
-                <motion.tr
-                  key={course.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100 flex gap-2 items-center">
-                    {course.title}
-                  </td>
+              {filteredProducts
+                .filter((course) => course.status === "active")
+                .map((course) => (
+                  <motion.tr
+                    key={course.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-100 flex gap-2 items-center">
+                      {course.title}
+                    </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                    {course.language}
-                  </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                      {course.language}
+                    </td>
 
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                    ${course.price}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                    {course.enrolled}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                    {course.totalLessions}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 flex">
-                    <div
-                      className="text-indigo-400 hover:text-indigo-300 mr-2 cursor-pointer"
-                    >
-                      <Link to={`/admin/detail-course/${course.id}`}>
-                        <Edit size={18} />
-                      </Link>
-                    </div>
-                    <div className="text-red-400 hover:text-red-300 cursor-pointer">
-                      <DeleteCourse course={course} onReload={handleReload}/>
-                    </div>
-                  </td>
-                </motion.tr>
-              ))}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                      ${course.price}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                      {course.enrolled}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                      {course.totalLessions}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 flex">
+                      <div className="text-indigo-400 hover:text-indigo-300 mr-2 cursor-pointer">
+                        <Link to={`/admin/detail-course/${course.id}`}>
+                          <Edit size={18} />
+                        </Link>
+                      </div>
+                      <div className="text-red-400 hover:text-red-300 cursor-pointer">
+                        <DeleteCourse course={course} onReload={handleReload} />
+                      </div>
+                    </td>
+                  </motion.tr>
+                ))}
             </tbody>
           )}
         </table>

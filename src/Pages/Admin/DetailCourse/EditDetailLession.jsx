@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Modal, Form, Input, message, Col, Row, Switch } from "antd";
 import { Edit } from "lucide-react";
-import { updateLession } from "../../../Services/lessionSerive";
+import { updateLession } from "../../../Services/lessionService";
 
 function EditDetailLession(props) {
   const { lession, onReload } = props;

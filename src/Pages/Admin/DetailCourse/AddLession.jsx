@@ -5,7 +5,7 @@ import { getFormattedDate } from "../../../Utils/dateTime";
 import {
   createLession,
   getLessionsById,
-} from "../../../Services/lessionSerive";
+} from "../../../Services/lessionService";
 
 function AddLession(props) {
   const { idCourse } = props;

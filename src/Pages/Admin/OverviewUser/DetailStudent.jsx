@@ -4,18 +4,24 @@ import HeaderAdmin from "../../../Components/HeaderAdminPage";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getDetailUser } from "../../../Services/userService";
-import { GoBack } from "../../../Components/GoBack"
+import { GoBack } from "../../../Components/GoBack";
+import { getAllEnrolledCoursesByUserId } from "../../../Services/enrolledCourseService";
+
 
 function DetailStudent() {
   const param = useParams();
   const id = param.id;
   const [student, setStudent] = useState();
-
+  const [courses, setCourses] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
       const res = await getDetailUser(id);
       if (res) {
         setStudent(res[0]);
+        const res_course = await getAllEnrolledCoursesByUserId(id)
+        if(res_course){
+          setCourses(res_course)
+        }
       }
     };
     fetchAPI();
@@ -27,7 +33,7 @@ function DetailStudent() {
       <main className="max-w-7xl mx-auto py-6 px-4 lg:px-8">
         <GoBack />
         <motion.div
-          className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700"
+          className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -74,6 +80,31 @@ function DetailStudent() {
               </div>
             </div>
           )}
+        </motion.div>
+
+        <motion.div
+          className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="w-[80%] mx-auto">
+            <h2 className="text-xl italic">Các khóa học đã đăng kí</h2>
+            <div>
+              {courses.map((course) => (
+                <div
+                  key={course.id}
+                  className="my-8 border-gray-400 border-2 py-5 px-7 rounded-xl"
+                >
+                  <div className="mb-2">Ngôn ngữ: <span className="uppercase">{course.language}</span></div>
+                  <div className="flex gap-3 items-center">
+                    <div>{course.title},</div>
+                    <div className="text-gray-400 italic">at {course.createdAt}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </main>
     </div>

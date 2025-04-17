@@ -6,9 +6,7 @@ import { StatCard } from "../../../Components/StatCard";
 import HeaderAdmin from "../../../Components/HeaderAdminPage";
 import { useEffect, useState } from "react";
 import { getOverview } from "../../../Services/overviewService";
-// import SalesOverviewChart from "../components/overview/SalesOverviewChart";
-// import CategoryDistributionChart from "../components/overview/CategoryDistributionChart";
-// import SalesChannelChart from "../components/overview/SalesChannelChart";
+import ChartCourse from "./ChartCourse";
 
 const OverviewPage = () => {
   const [overview, setOverview] = useState();
@@ -65,11 +63,9 @@ const OverviewPage = () => {
 
         {/* CHARTS */}
 
-        {/* <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-					<SalesOverviewChart />
-					<CategoryDistributionChart />
-					<SalesChannelChart />
-				</div> */}
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+        <ChartCourse />
+				</div>
       </main>
     </div>
   );

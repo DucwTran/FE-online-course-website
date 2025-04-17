@@ -21,6 +21,13 @@ import DetailCourseAdmin from "../Pages/Admin/DetailCourse";
 import DetailAdmin from "../Pages/Admin/OverviewAdmin/DetailAdmin";
 import DetailStudent from "../Pages/Admin/OverviewUser/DetailStudent";
 import CreateCourse from "../Pages/Admin/OverviewCourse/CreateCourse";
+import Orders from "../Pages/Admin/Order";
+import DetailOrder from "../Pages/Admin/Order/DetailOrder";
+import SettingsUser from "../Pages/User/SettingsPage";
+import EnrolledCourses from "../Pages/User/EnrolledCourses";
+import DetailEnrolledCourse from "../Pages/User/EnrolledCourses/DetailEnrolledCourse";
+import DetailCourseUser from "../Pages/User/AllCourse/DetailCourseUser";
+import AllCourseUser from "../Pages/User/AllCourse";
 
 export const Routes = [
   {
@@ -59,7 +66,28 @@ export const Routes = [
       {
         path: "/user",
         element: <LayoutUser />,
-        children: [],
+        children: [
+          {
+            index: true,
+            element: <EnrolledCourses />
+          },
+          {
+            path: "detail-enrolled-course/:id",
+            element: <DetailEnrolledCourse />
+          },
+          {
+            path: "all-courses",
+            element: <AllCourseUser />
+          },
+          {
+            path:"detail-course-user/:id",
+            element: <DetailCourseUser />
+          },
+          {
+            path: "settings",
+            element: <SettingsUser />
+          }
+        ],
       },
     ],
   },
@@ -99,12 +127,20 @@ export const Routes = [
             element: <DetailAdmin />
           },
           {
+            path: "detail-order/:id",
+            element: <DetailOrder />
+          },
+          {
             path: "detail-student/:id",
             element: <DetailStudent />
           }, 
           {
             path: "create-course",
             element: <CreateCourse />
+          },
+          {
+            path: "orders",
+            element: <Orders />
           }
         ],
       },

@@ -62,13 +62,13 @@ function EditDetailCourse(props) {
                 <Input />
               </Form.Item>
             </Col>
-            <Col span={24}>
+            <Col span={6}>
               <Form.Item label="Language" name="language">
                 <Input />
               </Form.Item>
             </Col>
             
-            <Col span={8}>
+            <Col span={18}>
               <Form.Item label="Description" name="description">
                 <Input />
               </Form.Item>
@@ -78,7 +78,7 @@ function EditDetailCourse(props) {
                 <Input />
               </Form.Item>
             </Col>
-            <Col span={24}>
+            <Col span={8}>
               <Form.Item label="Total Lessions" name="totalLessions">
                 <Input />
               </Form.Item>
@@ -89,22 +89,28 @@ function EditDetailCourse(props) {
                 <Input />
               </Form.Item>
             </Col>
-            <Col span={24}>
-              <Form.Item label="Duration" name="duration">
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col span={24}>
-              <Form.Item label="Skill Level" name="skillLevel">
-                <Input />
-              </Form.Item>
-            </Col>
-            
             <Col span={8}>
               <Form.Item label="Rating" name="EstimalRate">
                 <Input />
               </Form.Item>
             </Col>
+            <Col span={8}>
+              <Form.Item label="Duration" name="duration">
+                <Input />
+              </Form.Item>
+            </Col>
+
+            <Col span={8}>
+              <Form.Item label="Skill Level" name="skillLevel">
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item label="Active" name="status">
+                <Input />
+              </Form.Item>
+            </Col>
+            
             <Col span={24}>
               <Button type="primary" htmlType="submit">
                 Cập nhật
