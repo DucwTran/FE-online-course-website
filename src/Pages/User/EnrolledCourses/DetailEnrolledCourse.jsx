@@ -1,11 +1,14 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import HeaderUser from "../../../Components/HeaderUserPage";
 import { useEffect, useState } from "react";
 import { BookOutlined, PlusOutlined } from "@ant-design/icons";
-import { getEnrolledCoursesById } from "../../../Services/enrolledCourseService";
 import {
-  getEnrolledLessionsByCourseId,
-  patchProgressEnrolledLession,
+  getEnrolledCoursesById,
+  patchEnrolledCourse,
+} from "../../../Services/enrolledCourseService";
+import {
+  getEnrolledLessionsById,
+  patchEnrolledLession,
 } from "../../../Services/enrolledLession";
 import { Button, Modal, InputNumber, Form, Input } from "antd";
 import { getFormattedDate } from "../../../Utils/dateTime";
@@ -22,7 +25,7 @@ function DetailEnrolledCourse() {
       const res = await getEnrolledCoursesById(id);
       if (res) {
         setCourse(res);
-        const res_lessions = await getEnrolledLessionsByCourseId(res.id);
+        const res_lessions = await getEnrolledLessionsById(res.id);
         if (res_lessions) {
           setLessions(res_lessions);
         }
@@ -30,7 +33,6 @@ function DetailEnrolledCourse() {
     };
     fetchAPI();
   }, [id]);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLession, setSelectedLession] = useState(null);
   const showModal = (lession) => {
@@ -45,11 +47,15 @@ function DetailEnrolledCourse() {
   };
   const handleCompleteLession = async () => {
     const result = {
-      isCompleted: true,
-      completedAt: getFormattedDate(),
+      isFinish: true,
+      finishedAt: getFormattedDate(),
     };
-    const res = await patchProgressEnrolledLession(selectedLession.id, result);
-    if (res) {
+    const res = await patchEnrolledLession(selectedLession.id, result);
+    const result2 = {
+      progress: course.progress + 1,
+    };
+    const res2 = await patchEnrolledCourse(course.id, result2);
+    if (res && res2) {
       setLessions((prev) =>
         prev.map((item) =>
           item.id === selectedLession.id ? { ...item, ...result } : item
@@ -83,8 +89,13 @@ function DetailEnrolledCourse() {
       setIsModalOpen2(false);
     }
   };
+
+  const checkFinish = () => {
+    const result = lessions.every((lession) => lession.isFinish === true);
+    return result;
+  };
   return (
-    <div className="flex-1 overflow-auto relative z-10">
+    <div className="flex-1 relative z-10">
       <HeaderUser title={course?.title} />
 
       <div className="flex relative">
@@ -97,7 +108,9 @@ function DetailEnrolledCourse() {
                   <div
                     key={lession.id}
                     className="my-8 border-gray-400 cursor-pointer border-2 py-5 px-7 rounded-xl flex justify-between"
-                    onClick={() => showModal(lession)}
+                    onClick={() => {
+                      showModal(lession);
+                    }}
                   >
                     <div className="flex gap-3 items-center">
                       <div>
@@ -106,7 +119,7 @@ function DetailEnrolledCourse() {
                       <div>{lession.title}</div>
                     </div>
                     <div>
-                      {lession.isCompleted ? (
+                      {lession.isFinish ? (
                         <>
                           <div className="text-green-700">Hoàn thành</div>
                         </>
@@ -147,7 +160,6 @@ function DetailEnrolledCourse() {
                 width="1150"
                 height="562"
                 src={selectedLession.url}
-                title={selectedLession.description}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
@@ -158,7 +170,7 @@ function DetailEnrolledCourse() {
           )}
         </Modal>
         {course && (
-          <div className="absolute flex-1/4 top-20 right-10 border-2 h-[280px] w-[300px] border-gray-400 rounded-xl py-5 px-4">
+          <div className="absolute flex-1/4 top-20 right-10 border-2 h-[240px] w-[300px] border-gray-400 rounded-xl py-5 px-4">
             <div className="mt-3 mb-5">
               <span className="font-bold italic">Description</span>:{" "}
               {course.description}
@@ -175,9 +187,16 @@ function DetailEnrolledCourse() {
               <span className="font-bold italic">Duration</span>:{" "}
               {course.duration}
             </div>
-            <Button type="primary" className="mt-10" onClick={showModal2}>
+            <Button type="primary" className="mt-10 mr-5" onClick={showModal2}>
               <PlusOutlined /> Nhận xét
             </Button>
+            {checkFinish() && (
+              <Button type="primary" className="mt-10">
+                <Link to={`/user/quiz/${course.id}`}>
+                  <PlusOutlined /> Làm quiz
+                </Link>
+              </Button>
+            )}
             <Modal
               title="Thêm nhận xét cho khóa học này"
               open={isModalOpen2}

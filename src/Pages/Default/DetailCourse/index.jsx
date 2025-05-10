@@ -47,7 +47,8 @@ function DetailCourse() {
                           <Rate
                             style={{ color: "#FC6441" }}
                             tooltips={desc}
-                            value={course.EstimalRate}
+                            value={course.EstimateRate}
+                            disabled
                           />
                         </Flex>
                       </div>
@@ -58,7 +59,7 @@ function DetailCourse() {
                         <div className="px-3 py-2 flex justify-between items-center text-[15px] gap-2 max-w-[500px]">
                           <div className="flex justify-center items-center gap-1">
                             <BookOutlined />{" "}
-                            <span>Lession: {course.totalLessions}</span>
+                            <span>Lessions: {course.totalLessions}</span>
                           </div>
                           <div className="flex justify-center items-center gap-1">
                             <FieldTimeOutlined />{" "}

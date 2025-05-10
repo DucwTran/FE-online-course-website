@@ -16,7 +16,6 @@ function CourseHome() {
     };
     fetchAPI();
   }, []);
-  console.log(courses);
   return (
     <div className="bg-[url(/image/bg-course-home.png)]">
       <div className="max-w-[1080px] mx-auto pb-[150px]">
@@ -35,7 +34,7 @@ function CourseHome() {
         </div>
         <div className="grid gap-x-16 gap-y-20 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
           {courses.map((item, index) => (
-            <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center w-full" key={index}>
               <CardCourse key={index} course={item} />
             </div>
           ))}

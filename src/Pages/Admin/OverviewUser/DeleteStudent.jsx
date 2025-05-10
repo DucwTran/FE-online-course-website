@@ -3,9 +3,9 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { deleteUser } from "../../../Services/userService";
 
 function DeleteStudent(props) {
-  const { admin, onReLoad } = props;
+  const { student, onReLoad } = props;
   const handleDelete = async () => {
-    const response = await deleteUser(admin.id);
+    const response = await deleteUser(student.id);
     if (response) {
       onReLoad();
     }

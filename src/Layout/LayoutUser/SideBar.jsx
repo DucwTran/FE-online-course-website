@@ -17,7 +17,7 @@ import { motion } from "framer-motion";
 const SIDEBAR_ITEMS = [
   { name: "Overview", icon: BarChart2, color: "#6366f1", href: "" },
   { name: "All Courses", icon: ShoppingBag, color: "#8B5CF6", href: "all-courses" },
-  // { name: "Students", icon: Users, color: "#EC4899", href: "users" },
+  { name: "Quizzes", icon: Users, color: "#EC4899", href: "results" },
   // { name: "Admins", icon: User2, color: "#10B981", href: "admins" },
   // { name: "Orders", icon: ShoppingCart, color: "#F59E0B", href: "orders" },
   { name: "Settings", icon: Settings, color: "#6EE7B7", href: "settings" },
@@ -38,7 +38,7 @@ const Sidebar = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="p-2 rounded-full hover:bg-blue-400 transition-colors max-w-fit"
+          className="p-2 rounded-full hover:bg-gray-100 transition-colors max-w-fit"
         >
           <Menu size={24} />
         </motion.button>
@@ -46,7 +46,7 @@ const Sidebar = () => {
         <nav className="mt-8 flex-grow">
           {SIDEBAR_ITEMS.map((item) => (
             <Link key={item.href} to={item.href}>
-              <motion.div className="flex items-center p-4 text-sm font-medium rounded-lg hover:bg-[#74b9ff] transition-colors mb-2">
+              <motion.div className="flex items-center p-4 text-sm font-medium rounded-lg hover:bg-gray-100 transition-colors mb-2">
                 <item.icon
                   size={20}
                   style={{ color: item.color, minWidth: "20px" }}

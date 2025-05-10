@@ -13,12 +13,13 @@ import { Link } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
-
 const SIDEBAR_ITEMS = [
   { name: "Overview", icon: BarChart2, color: "#6366f1", href: "" },
   { name: "Courses", icon: ShoppingBag, color: "#8B5CF6", href: "courses" },
   { name: "Students", icon: Users, color: "#EC4899", href: "users" },
   { name: "Admins", icon: User2, color: "#10B981", href: "admins" },
+  { name: "Quizzes", icon: Menu, color: "#6EE580", href: "Quizzes" },
+  { name: "Results", icon: Users, color: "#EC7699", href: "results-admin" },
   { name: "Orders", icon: ShoppingCart, color: "#F59E0B", href: "orders" },
   { name: "Settings", icon: Settings, color: "#6EE7B7", href: "settings" },
 ];

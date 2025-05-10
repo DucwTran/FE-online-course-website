@@ -11,7 +11,7 @@ import {
 } from "recharts";
 import { getOverview } from "../../../Services/overviewService";
 
-const COLORS = ["#6366F1", "#8B5CF6", "#EC4899", "#10B981", "#F59E0B"];
+const COLORS = ["#8B5CF6", "#EC4899", "#10B981", "#F59E0B"];
 
 const ChartCourse = () => {
   const [categoryData, setCategoryData] = useState([]);
@@ -21,8 +21,7 @@ const ChartCourse = () => {
       const res = await getOverview();
       if (res) {
         const data = [
-          { name: "English TOEIC", value: res.totalELToeic },
-          { name: "English IELTS", value: res.totalELIELTS },
+          { name: "English", value: res.totalEL },
           { name: "Korean", value: res.totalKorean },
           { name: "Chinese", value: res.totalChinese },
           { name: "Japanese", value: res.totalJapanese },

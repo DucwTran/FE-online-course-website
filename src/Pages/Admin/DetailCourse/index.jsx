@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import HeaderAdmin from "../../../Components/HeaderAdminPage";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
@@ -13,6 +13,7 @@ import { Button } from "antd";
 import DeleteLession from "./DeleteLession";
 import AddLession from "./AddLession";
 import { getReviewById } from "../../../Services/reviewService";
+
 
 function DetailCourseAdmin() {
   const param = useParams();
@@ -56,7 +57,7 @@ function DetailCourseAdmin() {
       <main className="max-w-[1180px] mx-auto py-6 px-4 lg:px-8">
         <GoBack target="/admin/courses" />
         <motion.div
-          className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 mb-[20px]"
+          className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700 mb-[20px] capitalize"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -126,7 +127,7 @@ function DetailCourseAdmin() {
               </div>
               <div className="flex gap-5 mb-[20px]">
                 <div className="w-[180px] text-gray-300 uppercase">Rating:</div>{" "}
-                <div> {course.EstimalRate}</div>
+                <div> {course.EstimateRate}</div>
               </div>
               <div className="flex gap-5 mb-[20px]">
                 <div className="w-[180px] text-gray-300 uppercase">Edit:</div>{" "}
@@ -241,9 +242,11 @@ function DetailCourseAdmin() {
                 <div className="mb-8 ml-[85px]" key={review.id}>
                   <div className="flex gap-2">
                     <div className="font-bold">{review.nameUser} ,</div>
-                    <div className="text-gray-400">at {review.createdAt}</div>
+                    <div className="text-gray-400 mb-2">
+                      at {review.createdAt}
+                    </div>
                   </div>
-                  <div className="italic ml-2">{review.comment}</div>
+                  <div className="italic ml-4">{review.comment}</div>
                 </div>
               ))
             )}

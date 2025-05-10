@@ -83,10 +83,9 @@ const CoursesTable = () => {
             </tr>
           </thead>
 
-          {courses && (
+          {filteredProducts && (
             <tbody className="divide-y divide-gray-700">
               {filteredProducts
-                .filter((course) => course.status === "active")
                 .map((course) => (
                   <motion.tr
                     key={course.id}
@@ -98,7 +97,7 @@ const CoursesTable = () => {
                       {course.title}
                     </td>
 
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 capitalize">
                       {course.language}
                     </td>
 

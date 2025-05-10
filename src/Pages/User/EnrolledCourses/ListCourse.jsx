@@ -21,15 +21,24 @@ function ListCourse() {
   return (
     <div className="w-[80%] mx-auto mt-8">
       <div className="max-w-[1080px] mx-auto pb-[150px]">
-        <div className="grid gap-x-16 gap-y-20 grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3">
-          {courses.map((item, index) => (
-            <div className="flex items-center justify-center w-full" key={index}>
-              <Link to={`/user/detail-enrolled-course/${item.id}`}>
-                <CardEnrolledCourse course={item} />
-              </Link>
-            </div>
-          ))}
-        </div>
+        {courses.length === 0 ? (
+          <div className="flex justify-center items-center h-[300px] text-2xl font-semibold text-gray-500 italic">
+            Chưa đăng kí khóa học nào
+          </div>
+        ) : (
+          <div className="grid gap-x-16 gap-y-20 grid-cols-1 2xl:grid-cols-2 3xl:grid-cols-3">
+            {courses.map((item, index) => (
+              <div
+                className="flex items-center justify-center w-full"
+                key={index}
+              >
+                <Link to={`/user/detail-enrolled-course/${item.id}`}>
+                  <CardEnrolledCourse course={item} />
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

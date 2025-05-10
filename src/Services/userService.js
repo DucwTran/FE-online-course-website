@@ -1,6 +1,6 @@
 import { get, patch, del, post } from "../Utils/request";
 
-export const login = async (email, password = "") => {
+export const login = async (email, password = "") => { // không cần check, chỉ truyền rồi BE xử lý
   let pass = "";
   if (password !== "") {
     pass = `&password=${password}`;
@@ -9,7 +9,7 @@ export const login = async (email, password = "") => {
   return result;
 };
 
-export const updateLastLogin = async (id, options) => {
+export const updateLastLogin = async (id, options) => { //thừa,  đã làm ở BE
   const result = await patch(`users/${id}`, options);
   return result;
 };
@@ -44,7 +44,7 @@ export const deleteUser = async (id) => {
   return result;
 };
 
-export const checkExist = async (key, value) => {
+export const checkExist = async (key, value) => { // thừa, đã check ở BE
   const result = await get(`users?${key}=?${value}`); // cái này như kiểu filter
   return result;
 };

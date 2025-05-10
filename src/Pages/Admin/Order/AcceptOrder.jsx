@@ -6,9 +6,12 @@ import {
 } from "../../../Services/enrollmentService";
 import { getDetailCourse } from "../../../Services/courseService";
 import { postEnrolledCourse } from "../../../Services/enrolledCourseService";
+import { getLessionsById } from "../../../Services/lessionService";
+import { postEnrolledLession } from "../../../Services/enrolledLession";
 
 function AcceptOrder({ order, onReload }) {
   const [course, setCourse] = useState();
+  const [lessions, setLession] = useState();
   const admin = JSON.parse(localStorage.getItem("user"));
   const options = [
     { value: admin.id, label: "Accepted" },
@@ -17,7 +20,7 @@ function AcceptOrder({ order, onReload }) {
   const [form] = Form.useForm();
   const [mess, contextHolder] = message.useMessage();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  
   useEffect(() => {
     const fetchAPI = async () => {
       const res = await getDetailCourse(order.courseId);
@@ -25,6 +28,16 @@ function AcceptOrder({ order, onReload }) {
         setCourse(res);
       }
     };
+    fetchAPI();
+  }, [order]);
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const res = await getLessionsById(order.courseId);
+      if (res) {
+        setLession(res);
+      }
+    }
     fetchAPI();
   }, [order]);
 
@@ -51,6 +64,24 @@ function AcceptOrder({ order, onReload }) {
         progress: "0",
       };
       const res_enroll = await postEnrolledCourse(postEnroll);
+      if (lessions && lessions.length > 0) {
+        const results = await Promise.allSettled(
+          lessions.map(lession => 
+            postEnrolledLession({
+              ...lession,
+              enrollmentId: order.id,
+              courseId: order.courseId,
+              userId: order.userId,
+              isCompleted: false,
+              progress: 0,
+              enrolledAt: new Date().toISOString()
+            })
+          )
+        );
+        if(results) {
+          //
+        }
+      }
       if (res_enroll) {
         setIsModalOpen(false);
         onReload();

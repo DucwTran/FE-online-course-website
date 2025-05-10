@@ -26,19 +26,10 @@ function Footer() {
               <div className="font-[600] text-2xl mb-5">Our Service: </div>
               <div className="text-white mt-5">
                 <ul className="text-[17px]">
-                  <li className="mb-3 text-[18px]">
-                    <span className="font-[700] text-2xl">&gt;</span> Tiếng Anh
-                  </li>
-                  <li className="mb-3 text-[18px]">
-                    <span className="font-[700] text-2xl">&gt;</span> Tiếng Hàn
-                  </li>
-                  <li className="mb-3 text-[18px]">
-                    <span className="font-[700] text-2xl">&gt;</span> Tiếng Nhật
-                  </li>
-                  <li className="mb-3 text-[18px]">
-                    <span className="font-[700] text-2xl">&gt;</span> Tiếng
-                    Trung
-                  </li>
+                  <li className="mb-3 text-[18px]">Tiếng Anh</li>
+                  <li className="mb-3 text-[18px]">Tiếng Hàn</li>
+                  <li className="mb-3 text-[18px]">Tiếng Nhật</li>
+                  <li className="mb-3 text-[18px]">Tiếng Trung</li>
                 </ul>
               </div>
             </div>

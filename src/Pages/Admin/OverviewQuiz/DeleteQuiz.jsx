@@ -1,11 +1,11 @@
 import { Popconfirm, Tooltip } from "antd";
 import { Trash2 } from "lucide-react";
-import { deleteCourse } from "../../../Services/courseService";
+import { deleteQuiz } from "../../../Services/quizService";
 
-function DeleteCourse(props) {
-  const { course, onReLoad } = props;
+function DeleteQuiz(props) {
+  const { quiz, onReLoad } = props;
   const handleDelete = async () => {
-    const response = await deleteCourse(course.id);
+    const response = await deleteQuiz(quiz.id);
     if (response) {
       onReLoad();
     }
@@ -21,4 +21,4 @@ function DeleteCourse(props) {
   );
 }
 
-export default DeleteCourse
+export default DeleteQuiz

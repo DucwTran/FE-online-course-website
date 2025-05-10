@@ -28,6 +28,13 @@ import EnrolledCourses from "../Pages/User/EnrolledCourses";
 import DetailEnrolledCourse from "../Pages/User/EnrolledCourses/DetailEnrolledCourse";
 import DetailCourseUser from "../Pages/User/AllCourse/DetailCourseUser";
 import AllCourseUser from "../Pages/User/AllCourse";
+import Quiz from "../Pages/User/Quiz";
+import Answer from "../Pages/User/Quiz/Answer";
+import Results from "../Pages/User/Result";
+import OverviewQuiz from "../Pages/Admin/OverviewQuiz";
+import DetailQuiz from "../Pages/Admin/DetailQuiz";
+import CreateQuiz from "../Pages/Admin/OverviewQuiz/CreateQuiz";
+import ResultsAdmin from "../Pages/Admin/ResultAdmin";
 
 export const Routes = [
   {
@@ -61,7 +68,7 @@ export const Routes = [
     ],
   },
   {
-    element: <PrivateRoutes role="user" />,
+    element: <PrivateRoutes role="student" />,
     children: [
       {
         path: "/user",
@@ -69,24 +76,36 @@ export const Routes = [
         children: [
           {
             index: true,
-            element: <EnrolledCourses />
+            element: <EnrolledCourses />,
           },
           {
             path: "detail-enrolled-course/:id",
-            element: <DetailEnrolledCourse />
+            element: <DetailEnrolledCourse />,
           },
           {
             path: "all-courses",
-            element: <AllCourseUser />
+            element: <AllCourseUser />,
           },
           {
-            path:"detail-course-user/:id",
-            element: <DetailCourseUser />
+            path: "results",
+            element: <Results />
+          },
+          {
+            path: "quiz/:id",
+            element: <Quiz />,
+          },
+          {
+            path: "answer/:id",
+            element: <Answer />,
+          },
+          {
+            path: "detail-course-user/:id",
+            element: <DetailCourseUser />,
           },
           {
             path: "settings",
-            element: <SettingsUser />
-          }
+            element: <SettingsUser />,
+          },
         ],
       },
     ],
@@ -104,43 +123,63 @@ export const Routes = [
           },
           {
             path: "courses",
-            element: <OverviewCourse />
+            element: <OverviewCourse />,
+          },
+          {
+            path: "quizzes",
+            element: <OverviewQuiz />
           },
           {
             path: "users",
-            element: <OverviewUser />
+            element: <OverviewUser />,
           },
           {
             path: "admins",
-            element: <OverviewAdmin />
+            element: <OverviewAdmin />,
           },
           {
-            path: "settings", 
-            element: <SettingsPage />
+            path: "settings",
+            element: <SettingsPage />,
           },
           {
             path: "detail-course/:id",
-            element: <DetailCourseAdmin />
+            element: <DetailCourseAdmin />,
+          },
+          {
+            path: "detail-quiz/:id",
+            element: <DetailQuiz />
           },
           {
             path: "detail-admin/:id",
-            element: <DetailAdmin />
+            element: <DetailAdmin />,
+          },
+          {
+            path: "detail-quiz/:id",
+
           },
           {
             path: "detail-order/:id",
-            element: <DetailOrder />
+            element: <DetailOrder />,
           },
           {
             path: "detail-student/:id",
-            element: <DetailStudent />
-          }, 
+            element: <DetailStudent />,
+          },
           {
             path: "create-course",
-            element: <CreateCourse />
+            element: <CreateCourse />,
+          },
+          {
+            path: "create-quiz",
+            element: <CreateQuiz />
           },
           {
             path: "orders",
-            element: <Orders />
+            element: <Orders />,
+          },
+          {
+            path: "results-admin",
+            element: <ResultsAdmin />
           }
         ],
       },

@@ -1,38 +1,34 @@
 import { Button, Form, Input, message } from "antd";
 import { EyeTwoTone, EyeInvisibleOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
-import { login, updateLastLogin } from "../../../Services/userService";
-import { getFormattedDate } from "../../../Utils/dateTime";
-// import { useDispatch } from "react-redux";
-// import { loginUser } from "../../../Redux/userSlice";
+import { login } from "../../../Services/userService";
 
 function Login() {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
 
   const handleSubmit = async (values) => {
+    if(!values.email || !values.password) {
+      messageApi.error("Vui lòng nhập đầy đủ thông tin!");
+      return;
+    }
     const data = await login(values.email, values.password);
-    if (data.length > 0 && data[0].status === "active") {
-      localStorage.setItem("user", JSON.stringify(data[0]));
-      // dispatch(loginUser(data[0].id));
-      const dateTime = {
-        lastLogin: getFormattedDate(),
-      };
-      const res = await updateLastLogin(data[0].id, dateTime);
-
-      if (res) {
+    if (data.length === 0) {
+      messageApi.error("Tài khoản hoặc mật khẩu không chính xác!");
+    } else {
+      if (data.length > 0 && data[0].status === "active") {
+        localStorage.setItem("user", JSON.stringify(data[0]));
         if (data[0].role === "student") {
           navigate("/user");
         } else if (data[0].role === "admin") {
           navigate("/admin");
         }
+      } else if (data[0].status !== "active") {
+        messageApi.error("Tài khoản của bạn đã bị khóa!");
+      } else {
+        messageApi.error("Tài khoản hoặc mật khẩu không chinh xác!");
       }
-    } else if (data[0].status !== "active") {
-      messageApi.error("Tài khoản của bạn đã bị khóa!");
-    } else {
-      messageApi.error("Tài khoản hoặc mật khẩu không chinh xác!");
     }
   };
   return (

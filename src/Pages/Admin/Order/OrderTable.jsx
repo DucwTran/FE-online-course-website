@@ -41,7 +41,6 @@ const OrdersTable = () => {
   const handleReload = () => {
     fetchAPI();
   };
-  console.log(filteredOrders)
   return (
     <motion.div
       className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700"
@@ -68,7 +67,7 @@ const OrdersTable = () => {
           <thead>
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
-                ID
+                STT
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 NAME COURSE
@@ -89,14 +88,14 @@ const OrdersTable = () => {
           </thead>
 
           <tbody className="divide-y divide-gray-700">
-            {filteredOrders.map((order) => (
+            {filteredOrders.map((order, index) => (
               <motion.tr
                 key={order.id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                <td className="px-6 py-4 whitespace-nowrap">{order.id}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
 
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-300">

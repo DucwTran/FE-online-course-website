@@ -4,42 +4,30 @@ import { motion } from "framer-motion";
 import HeaderAdmin from "../../../Components/HeaderAdminPage";
 import { Button, Form, Input, message, Col, Row } from "antd";
 import { getFormattedDate } from "../../../Utils/dateTime";
-import { createCourse, getAllCourses } from "../../../Services/courseService";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { createQuiz } from "../../../Services/quizService";
 
-function CreateCourse() {
+function CreateQuiz() {
   const [form] = Form.useForm();
   const [mess, contextHolder] = message.useMessage();
   const navigate = useNavigate();
-  const [lengthNumCourse, setLengthNumCourse] = useState();
-  useEffect(() => {
-    const fetchAPI = async () => {
-      const AllCourses = await getAllCourses();
-      if (AllCourses) {
-        setLengthNumCourse(AllCourses.length);
-      }
-    };
-    fetchAPI();
-  }, []);
+
 
   const handleFinish = async (values) => {
     const result = {
       ...values,
-      enrolled: 0,
       createdAt: getFormattedDate(),
-      EstimateRate: 5,
-      totalLessions: 0,
-      status: "active",
+      totalQuestions: 0,
+      questions: []
     };
-    const res = await createCourse(result);
+    const res = await createQuiz(result);
     if (res) {
       mess.open({
         title: "success",
         content: "Cập nhật thành công",
         duration: 5,
       });
-      navigate(`/admin/detail-course/${lengthNumCourse + 1}`);
+      navigate(`/admin/quizzes`);
     } else {
       mess.open({
         title: "error",
@@ -51,7 +39,7 @@ function CreateCourse() {
 
   return (
     <div className="flex-1 overflow-auto relative z-10">
-      <HeaderAdmin title={`Create Course`} />
+      <HeaderAdmin title={`Create Quiz`} />
       {contextHolder}
 
       <main className="max-w-[1180px] mx-auto py-6 px-4 lg:px-8">
@@ -63,27 +51,26 @@ function CreateCourse() {
           transition={{ delay: 0.2 }}
         >
           <div className="text-3xl font-bold mb-[30px] text-center">
-            Thông tin khóa học
+            Thông tin Quiz
           </div>
           <Form layout="vertical" form={form} onFinish={handleFinish}>
             <Row gutter={16}>
-              <Col span={24}>
+              <Col span={18}>
                 <Form.Item
-                  label={<span className="text-white">Name</span>}
+                  label={<span className="text-white">Title</span>}
                   name="title"
                 >
                   <Input />
                 </Form.Item>
               </Col>
-              <Col span={24}>
+              <Col span={6}>
                 <Form.Item
-                  label={<span className="text-white">Language</span>}
-                  name="language"
+                  label={<span className="text-white">Course ID</span>}
+                  name="courseId"
                 >
                   <Input />
                 </Form.Item>
               </Col>
-
               <Col span={24}>
                 <Form.Item
                   label={<span className="text-white">Description</span>}
@@ -92,39 +79,6 @@ function CreateCourse() {
                   <Input />
                 </Form.Item>
               </Col>
-              <Col span={8}>
-                <Form.Item
-                  label={<span className="text-white">Price</span>}
-                  name="price"
-                >
-                  <Input />
-                </Form.Item>
-              </Col>
-              <Col span={8}>
-                <Form.Item
-                  label={<span className="text-white">Skill Level</span>}
-                  name="skillLevel"
-                >
-                  <Input />
-                </Form.Item>
-              </Col>
-              <Col span={8}>
-                <Form.Item
-                  label={<span className="text-white">Duration</span>}
-                  name="duration"
-                >
-                  <Input />
-                </Form.Item>
-              </Col>
-              <Col span={24}>
-                <Form.Item
-                  label={<span className="text-white">Thumbnail</span>}
-                  name="thumbnail"
-                >
-                  <Input />
-                </Form.Item>
-              </Col>
-
               <Col span={24}>
                 <Button type="primary" htmlType="submit">
                   Cập nhật
@@ -138,4 +92,4 @@ function CreateCourse() {
   );
 }
 
-export default CreateCourse;
+export default CreateQuiz;

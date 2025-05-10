@@ -6,30 +6,24 @@ import {
   Col,
   Row,
   Modal,
+  Select,
   Switch,
   Tooltip,
-  Select,
 } from "antd";
 import { useState } from "react";
 import { EditOutlined } from "@ant-design/icons";
 import { updateUser } from "../../../Services/userService";
 
-function EditStudent(props) {
-  const options = [
-    { value: "admin", label: "Admin" },
-    { value: "student", label: "Student" },
-  ];
-  const { student, onReload } = props;
+function EditUser(props) {
+  const { user, onReload } = props;
+
   const [form] = Form.useForm();
   const [mess, contextHolder] = message.useMessage();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
     setIsModalOpen(true);
-    form.setFieldsValue({
-      ...student,
-      status: student.status === "active",
-    });
+    form.setFieldsValue(user);
   };
   const handleCancel = () => {
     form.resetFields();
@@ -37,8 +31,7 @@ function EditStudent(props) {
   };
 
   const handleFinish = async (values) => {
-    values.status = values.status ? "active" : "inactive";
-    const response = await updateUser(student.id, values);
+    const response = await updateUser(user.id, values);
     if (response) {
       setIsModalOpen(false);
       onReload();
@@ -55,7 +48,6 @@ function EditStudent(props) {
       });
     }
   };
-  console.log(student);
   return (
     <>
       {contextHolder}
@@ -65,12 +57,11 @@ function EditStudent(props) {
           onClick={showModal}
           className="ml-5"
           icon={<EditOutlined />}
-          type="primary"
         />
       </Tooltip>
 
       <Modal
-        title="Chỉnh sửa User"
+        title="Chỉnh sửa user"
         open={isModalOpen}
         onCancel={handleCancel}
         footer={null}
@@ -78,7 +69,7 @@ function EditStudent(props) {
         <Form
           layout="vertical"
           form={form}
-          initialValues={student}
+          initialValues={user}
           onFinish={handleFinish}
         >
           <Row gutter={16}>
@@ -97,30 +88,6 @@ function EditStudent(props) {
                 <Input />
               </Form.Item>
             </Col>
-            <Col span={8}>
-              <Form.Item label="Role" name="role">
-                <Select style={{ width: 120 }} options={options} />
-              </Form.Item>
-            </Col>
-            <Col span={8}>
-              <Form.Item label="Created At" name="createdAt">
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col span={8}>
-              <Form.Item label="Last Login" name="lastLogin">
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col span={24}>
-              <Form.Item
-                label="Trạng thái"
-                name="status"
-                valuePropName="checked"
-              >
-                <Switch checkedChildren="On" unCheckedChildren="Off" />
-              </Form.Item>
-            </Col>
             <Col span={24}>
               <Button type="primary" htmlType="submit">
                 Cập nhật
@@ -133,4 +100,4 @@ function EditStudent(props) {
   );
 }
 
-export default EditStudent;
+export default EditUser;

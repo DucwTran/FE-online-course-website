@@ -1,7 +1,5 @@
 import { post, get, patch, del } from "../Utils/request";
 
-
-
 export const getLessionsById = async (id) => {
   const result = await get(`lessions?courseId=${id}`);
   return result;

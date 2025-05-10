@@ -17,17 +17,12 @@ function AllCourses() {
   console.log(courses);
   return (
     <>
-      <div>
-        <div className="bg-[url(/public/image/bg-header-all-courses.png)] h-[170px] md:h-[250px] w-full bg-cover flex justify-center items-center text-5xl md:text-[80px] font-[600]">
-          All Courses
-        </div>
-      </div>
       <div className="bg-[url(/image/bg-course-home.png)]">
         <div className="max-w-[1080px] mx-auto pb-[150px]">
           <div className="flex flex-col 2xl:flex-row justify-between items-center py-12 ">
             <div className="max-w-[400px] flex flex-col justify-center items-center 2xl:block ml-10 3xl:ml-0">
               <h1 className="pt-3 font-bold text-[35px] text-center 2xl:text-left">
-                Edunity Course student can join with us.
+                TohC Course student can join with us.
               </h1>
             </div>
           </div>
