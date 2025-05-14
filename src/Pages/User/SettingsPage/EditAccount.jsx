@@ -32,7 +32,7 @@ function EditUser(props) {
 
   const handleFinish = async (values) => {
     const response = await updateUser(user.id, values);
-    if (response) {
+    if (response.status === "success") {
       setIsModalOpen(false);
       onReload();
       mess.open({

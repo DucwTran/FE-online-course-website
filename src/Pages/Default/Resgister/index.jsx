@@ -1,12 +1,7 @@
 import { Button, Form, Input, message } from "antd";
 import { EyeTwoTone, EyeInvisibleOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import { generateToken } from "../../../Utils/generateToken";
-import {
-  checkExist,
-  createAccount,
-  getAllUsers,
-} from "../../../Services/userService";
+import { createAccount } from "../../../Services/userService";
 import { getFormattedDate } from "../../../Utils/dateTime";
 
 function Register() {
@@ -15,28 +10,18 @@ function Register() {
   const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
-    const token = generateToken();
-    const checkExistEmail = await checkExist("email", values.email);
-    const allUser = await getAllUsers();
-
-    if (checkExistEmail.length > 0) {
-      messageApi.error("Email đã tồn tại!");
+    const dateTime = getFormattedDate();
+    const user = {
+      ...values,
+      status: "active",
+      role: "student",
+      createAt: dateTime,
+    };
+    const result = await createAccount(user);
+    if (result.error) {
+      messageApi.error(result.error);
     } else {
-      const dateTime = getFormattedDate();
-      const user = {
-        ...values,
-        id: (allUser.length + 1).toString(),
-        token,
-        status: "inactive",
-        role: "admin",
-        createAt: dateTime,
-        lastLogin: null,
-        avatar: null,
-      };
-      const result = await createAccount(user);
-      if (result) {
-        navigate("/login");
-      }
+      navigate("/login");
     }
   };
 

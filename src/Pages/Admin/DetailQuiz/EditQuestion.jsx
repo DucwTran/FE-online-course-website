@@ -22,7 +22,7 @@ function EditQuestion(props) {
   const showModal = () => {
     setIsModalOpen(true);
     const mappedOptions = question.options.map((opt) => ({
-      text: opt.option, // đổi 'option' -> 'text'
+      text: opt.option, 
       isCorrect: opt.isCorrect,
     }));
     form.setFieldsValue({
@@ -38,23 +38,22 @@ function EditQuestion(props) {
   };
   const handleFinish = async (values) => {
 
-    // const response = await updateQuestion(question.id.toString(), values);
-    // if (response) {
-    //   setIsModalOpen(false);
-    //   onReload();
-    //   mess.open({
-    //     title: "success",
-    //     content: "Cập nhật thành công",
-    //     duration: 5,
-    //   });
-    // } else {
-    //   mess.open({
-    //     title: "error",
-    //     content: "Cập nhật không thành công",
-    //     duration: 3,
-    //   });
-    // }
-    console.log("values", values);
+    const response = await updateQuestion(question.id.toString(), values);
+    if (response) {
+      setIsModalOpen(false);
+      onReload();
+      mess.open({
+        title: "success",
+        content: "Cập nhật thành công",
+        duration: 5,
+      });
+    } else {
+      mess.open({
+        title: "error",
+        content: "Cập nhật không thành công",
+        duration: 3,
+      });
+    }
   };
 
   return (

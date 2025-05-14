@@ -3,16 +3,15 @@ import HeaderUser from "../../../Components/HeaderUserPage";
 import { useEffect, useState } from "react";
 import { BookOutlined, PlusOutlined } from "@ant-design/icons";
 import {
-  getEnrolledCoursesById,
-  patchEnrolledCourse,
 } from "../../../Services/enrolledCourseService";
 import {
-  getEnrolledLessionsById,
   patchEnrolledLession,
 } from "../../../Services/enrolledLession";
 import { Button, Modal, InputNumber, Form, Input } from "antd";
 import { getFormattedDate } from "../../../Utils/dateTime";
 import { postReview } from "../../../Services/reviewService";
+import { getLessionsById } from "../../../Services/lessionService";
+import { getDetailCourse } from "../../../Services/courseService";
 
 function DetailEnrolledCourse() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -22,10 +21,10 @@ function DetailEnrolledCourse() {
   const [lessions, setLessions] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
-      const res = await getEnrolledCoursesById(id);
+      const res = await getDetailCourse(id);
       if (res) {
         setCourse(res);
-        const res_lessions = await getEnrolledLessionsById(res.id);
+        const res_lessions = await getLessionsById(res.id);
         if (res_lessions) {
           setLessions(res_lessions);
         }
@@ -47,15 +46,12 @@ function DetailEnrolledCourse() {
   };
   const handleCompleteLession = async () => {
     const result = {
+      userId: user.id,
       isFinish: true,
       finishedAt: getFormattedDate(),
     };
     const res = await patchEnrolledLession(selectedLession.id, result);
-    const result2 = {
-      progress: course.progress + 1,
-    };
-    const res2 = await patchEnrolledCourse(course.id, result2);
-    if (res && res2) {
+    if (res) {
       setLessions((prev) =>
         prev.map((item) =>
           item.id === selectedLession.id ? { ...item, ...result } : item
@@ -80,9 +76,7 @@ function DetailEnrolledCourse() {
     const result = {
       ...values,
       userId: user.id,
-      nameUser: user.fullName,
       courseId: id,
-      createdAt: getFormattedDate(),
     };
     const res = await postReview(result);
     if (res) {

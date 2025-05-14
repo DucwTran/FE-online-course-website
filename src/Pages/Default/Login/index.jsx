@@ -13,18 +13,18 @@ function Login() {
       messageApi.error("Vui lòng nhập đầy đủ thông tin!");
       return;
     }
-    const data = await login(values.email, values.password);
-    if (data.length === 0) {
+    const data = await login(values);
+    if (!data) {
       messageApi.error("Tài khoản hoặc mật khẩu không chính xác!");
     } else {
-      if (data.length > 0 && data[0].status === "active") {
-        localStorage.setItem("user", JSON.stringify(data[0]));
-        if (data[0].role === "student") {
+      if (data.status === "active") {
+        localStorage.setItem("user", JSON.stringify(data));
+        if (data.role === "student") {
           navigate("/user");
-        } else if (data[0].role === "admin") {
+        } else if (data.role === "admin") {
           navigate("/admin");
         }
-      } else if (data[0].status !== "active") {
+      } else if (data.status !== "active") {
         messageApi.error("Tài khoản của bạn đã bị khóa!");
       } else {
         messageApi.error("Tài khoản hoặc mật khẩu không chinh xác!");

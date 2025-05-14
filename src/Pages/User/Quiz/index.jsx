@@ -15,17 +15,21 @@ function Quiz() {
     const fetchAPI = async () => {
       const res = await getQuizById(id);
       if (res) {
-        setQuizzes(res[0]);
+        setQuizzes(res);
       }
     };
     fetchAPI();
   }, [id]);
   const [form] = Form.useForm();
   const handleSubmit = async (value) => {
+    const userAnswers = Object.entries(value).map(([questionId, optionId]) => ({
+      questionId: questionId, 
+      AnswerContent: optionId,
+    }));
     const result = {
       userId : user.id,
-      courseId: id,
-      answerOfUser: value
+      quizId: quizzes.id,
+      answerOfUser: userAnswers
     }
     const res = await postAnswerUser(result);
     if(res) {

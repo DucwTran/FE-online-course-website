@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllCourses } from "../../../Services/courseService";
+import { getAllCoursesNotEnroll } from "../../../Services/courseService";
 import { CardCourse } from "../../../Components/CardCourse";
 
 function ListCourse() {
@@ -10,7 +10,7 @@ function ListCourse() {
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const res = await getAllCourses();
+      const res = await getAllCoursesNotEnroll(id);
       if (res) {
         setCourses(res);
       }

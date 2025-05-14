@@ -62,11 +62,6 @@ function EditDetailQuiz(props) {
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item label="Name Course" name="nameCourse">
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col span={24}>
               <Form.Item label="Description" name="description">
                 <Input.TextArea rows={4} />
               </Form.Item>

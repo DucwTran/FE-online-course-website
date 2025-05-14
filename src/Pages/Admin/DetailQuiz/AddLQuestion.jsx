@@ -14,11 +14,11 @@ function AddQuestion({ isNotFull, quizId, onReload }) {
     // Mặc định 4 đáp án rỗng
     form.setFieldsValue({
       question: "",
-      options: [
-        { text: "", isCorrect: false },
-        { text: "", isCorrect: false },
-        { text: "", isCorrect: false },
-        { text: "", isCorrect: false },
+      listOptions: [
+        { optionText: "", isCorrect: false },
+        { optionText: "", isCorrect: false },
+        { optionText: "", isCorrect: false },
+        { optionText: "", isCorrect: false },
       ],
     });
   };
@@ -32,23 +32,22 @@ function AddQuestion({ isNotFull, quizId, onReload }) {
       ...values,
       quizId,
     };
-    // const response = await createQuestion(results);
-    // if (response) {
-    //   setIsModalOpen(false);
-    //   onReload();
-    //   mess.open({
-    //     type: "success",
-    //     content: "Tạo câu hỏi thành công",
-    //     duration: 5,
-    //   });
-    // } else {
-    //   mess.open({
-    //     type: "error",
-    //     content: "Tạo câu hỏi thất bại",
-    //     duration: 3,
-    //   });
-    // }
-    console.log("result", results);
+    const response = await createQuestion(results);
+    if (response) {
+      setIsModalOpen(false);
+      onReload();
+      mess.open({
+        type: "success",
+        content: "Tạo câu hỏi thành công",
+        duration: 5,
+      });
+    } else {
+      mess.open({
+        type: "error",
+        content: "Tạo câu hỏi thất bại",
+        duration: 3,
+      });
+    }
   };
 
   return (

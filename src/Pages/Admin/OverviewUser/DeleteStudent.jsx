@@ -6,7 +6,7 @@ function DeleteStudent(props) {
   const { student, onReLoad } = props;
   const handleDelete = async () => {
     const response = await deleteUser(student.id);
-    if (response) {
+    if (response.status === "success") {
       onReLoad();
     }
   };

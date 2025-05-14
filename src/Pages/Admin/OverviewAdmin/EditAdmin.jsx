@@ -35,7 +35,7 @@ function EditAdmin(props) {
 
   const handleFinish = async (values) => {
     const response = await updateUser(admin.id, values);
-    if (response) {
+    if (response.status === "success") {
       setIsModalOpen(false);
       onReload();
       mess.open({

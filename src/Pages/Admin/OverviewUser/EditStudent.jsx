@@ -39,7 +39,7 @@ function EditStudent(props) {
   const handleFinish = async (values) => {
     values.status = values.status ? "active" : "inactive";
     const response = await updateUser(student.id, values);
-    if (response) {
+    if (response.status==="success") {
       setIsModalOpen(false);
       onReload();
       mess.open({
@@ -100,16 +100,6 @@ function EditStudent(props) {
             <Col span={8}>
               <Form.Item label="Role" name="role">
                 <Select style={{ width: 120 }} options={options} />
-              </Form.Item>
-            </Col>
-            <Col span={8}>
-              <Form.Item label="Created At" name="createdAt">
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col span={8}>
-              <Form.Item label="Last Login" name="lastLogin">
-                <Input />
               </Form.Item>
             </Col>
             <Col span={24}>

@@ -1,12 +1,12 @@
-import { post, get, patch, del } from "../Utils/request";
+import { post, get, put, del } from "../Utils/request";
 
 export const getAllCourses = async () => {
   const result = await get("courses");
   return result;
 };
 
-export const getAllCoursesNotEnroll = async () => { //chưa dùng
-  const result = await get("coursesNotEnroll");
+export const getAllCoursesNotEnroll = async (id) => { 
+  const result = await get(`courses/none-enrolled/${id}`);
   return result;
 };
 
@@ -21,7 +21,7 @@ export const getDetailCourse = async (id) => {
 };
 
 export const updateCourse = async (id, options) => {
-  const result = await patch(`courses/${id}`, options);
+  const result = await put(`courses/${id}`, options);
   return result;
 };
 

@@ -2,13 +2,13 @@ import { get, post, del, patch } from "../Utils/request"
 
 export const updateQuestion = async (id, options) => {
   // cập nhật câu hỏi
-  const result = await patch(`questions/${id}`, options);
+  const result = await patch(`quizzes/questions/${id}`, options);
   return result;
 }
 
 export const createQuestion = async (options) => {
   // tạo câu hỏi
-  const result = await post("questions", options);
+  const result = await post("quizzes/questions", options);
   return result;
 }
 
@@ -32,7 +32,7 @@ export const getAllAnswerOfQuiz = async () => {
 
 export const getAllAnswerOfUser = async (id) => {
   //lấy tất cả answer của user
-  const result = await get(`answers?userId=${id}`);
+  const result = await get(`answers/user?userId=${id}`);
   return result;
 };
 
@@ -42,7 +42,7 @@ export const getQuizById = async (id) => {
 }
 
 export const getAllQuiz = async () => { //lấy tất cả quiz
-  const result = await get("quizzes");
+  const result = await get("quizzes/all");
   return result;
 }
 

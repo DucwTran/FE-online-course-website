@@ -6,7 +6,7 @@ function DeleteQuiz(props) {
   const { quiz, onReLoad } = props;
   const handleDelete = async () => {
     const response = await deleteQuiz(quiz.id);
-    if (response) {
+    if (response.status ==="success") {
       onReLoad();
     }
   };

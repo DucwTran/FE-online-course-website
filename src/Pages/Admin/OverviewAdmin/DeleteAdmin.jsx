@@ -7,7 +7,7 @@ function DeleteAdmin(props) {
   const { admin, onReLoad } = props;
   const handleDelete = async () => {
     const response = await deleteUser(admin.id);
-    if (response) {
+    if (response.status === "success") {
       onReLoad();
     }
   };
